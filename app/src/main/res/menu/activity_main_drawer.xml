@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item android:title="Basic info">
+            <menu>
+                <item
+                    android:id="@+id/editProfile"
+                    android:icon="@drawable/outline"
+                    android:title="Edit Profile" />
+                <item
+                    android:id="@+id/message"
+                    android:icon="@drawable/message"
+                    android:title="Message" />
+                <item
+                    android:id="@+id/refresh"
+                    android:icon="@drawable/refresh"
+                    android:title="Refresh" />
+            </menu>
+        </item>
+    </group>
+
+    <item android:title="Share with your friend">
+        <menu>
+            <item
+                android:id="@+id/google"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Google+" />
+            <item
+                android:id="@+id/facebook"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Facebook" />
+            <item
+                android:id="@+id/twitter"
+                android:icon="@drawable/ic_menu_share"
+                android:title="twitter" />
+        </menu>
+    </item>
+
+    <item android:title="Settings">
+        <menu>
+            <item
+                android:id="@+id/about"
+                android:icon="@drawable/description"
+                android:title="About" />
+            <item
+                android:id="@+id/help"
+                android:icon="@drawable/help"
+                android:title="Help" />
+            <item
+                android:id="@+id/signOut"
+                android:icon="@drawable/lock"
+                android:title="Sign out" />
+        </menu>
+    </item>
+
+</menu>

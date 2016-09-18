@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.user.myapps1st">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/portfolio"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".SplashScreen"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".WebActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Profile.ProfileActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Register"
+            android:parentActivityName=".LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Skill.SkillList"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Experience.ExperienceList"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Skill.DialogSkillActivity"
+            android:parentActivityName=".Skill.SkillList" />
+        <activity
+            android:name=".Experience.DialogExperienceActivity"
+            android:parentActivityName=".Experience.ExperienceList" />
+        <activity
+            android:name=".Contact.ContactActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Portfolio.CategoryList"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Portfolio.CategoryAddActivity"
+            android:parentActivityName=".Portfolio.CategoryList" />
+        <activity
+            android:name=".Experience.ExperienceDetail"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/CollapsingTheme"></activity>
+
+        <activity
+            android:name=".Portfolio.DialogWorkActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Portfolio.WorkList"
+            android:parentActivityName=".MainActivity" />
+
+        <activity
+            android:name=".Portfolio.WorkDetail"
+            android:theme="@style/CollapsingTheme"
+            android:parentActivityName=".Portfolio.WorkList" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/app_id" />
+    </application>
+
+</manifest>

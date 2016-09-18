@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/nav_header_height"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+       <ImageView
+           android:id="@+id/image"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:background="@drawable/noimage"/>
+
+       <TextView
+           android:id="@+id/name"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Suraj Bhandari"
+           android:layout_margin="8dp"
+           android:textColor="#fff"
+           android:theme="@style/MyButton"
+           android:textAppearance="?android:attr/textAppearanceLarge"
+           android:layout_alignParentBottom="true"
+           android:layout_alignParentRight="true"
+           android:layout_alignParentEnd="true" />
+
+   </RelativeLayout>
+</LinearLayout>

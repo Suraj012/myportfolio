@@ -1,0 +1,60 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="CollapsingTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="ExpandedAppBar" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">#fff</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="MyButton" parent="Theme.AppCompat.Light">
+        <item name="colorControlHighlight">#ccc</item>
+    </style>
+
+    <style name ="tab_style" parent="TextAppearance.AppCompat.Headline">
+
+        <item name = "android:textSize">15dp</item>
+
+    </style>
+    <style name="Material.Drawable.LinearProgress.custom">
+        <item name="lpd_maxLineWidth">75%</item>
+        <item name="lpd_minLineWidth">10%</item>
+        <item name="lpd_strokeSize">4dp</item>
+        <item name="lpd_strokeColors">@array/linear_progress_colors</item>
+        <item name="lpd_strokeColor">?attr/colorPrimary</item>
+        <item name="lpd_strokeSecondaryColor">@android:color/transparent</item>
+        <item name="lpd_reverse">false</item>
+        <item name="lpd_travelDuration">600</item>
+        <item name="lpd_transformDuration">400</item>
+        <item name="lpd_keepDuration">200</item>
+        <item name="lpd_transformInterpolator">@android:anim/decelerate_interpolator</item>
+        <item name="pv_progressMode">indeterminate</item>
+        <item name="lpd_inAnimDuration">@android:integer/config_mediumAnimTime</item>
+        <item name="lpd_outAnimDuration">@android:integer/config_mediumAnimTime</item>
+        <item name="lpd_verticalAlign">bottom</item>
+    </style>
+
+</resources>

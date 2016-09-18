@@ -1,0 +1,155 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.example.user.myapps1st.Home_fragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <!-- TODO: Update blank fragment layout -->
+
+        <LinearLayout
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/grey"
+            android:visibility="gone">
+
+            <com.rey.material.widget.TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="MAP"
+                android:textSize="25dp" />
+
+        </LinearLayout>
+
+        <com.rey.material.widget.TextView
+            android:id="@+id/error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="180dp"
+            android:gravity="center"
+            android:text="Sorry ! Not Found Any Information"
+            android:textSize="18dp"
+            android:textColor="@color/materialred"
+            android:visibility="visible" />
+
+        <com.rey.material.widget.Button
+            android:id="@+id/add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/orangePrimary"
+            android:padding="10dp"
+            android:text="Add Information"
+            android:textColor="#fff"
+            android:textSize="15dp"
+            android:visibility="visible" />
+
+
+        <LinearLayout
+            android:id="@+id/info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="60dp"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <com.rey.material.widget.TextView
+                android:id="@+id/location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Address:"
+                android:textColor="@color/orangePrimaryD"
+                android:textSize="18dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center">
+
+                <com.rey.material.widget.TextView
+                    android:id="@+id/address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Nardevi"
+                    android:textSize="15dp" />
+
+                <com.rey.material.widget.TextView
+                    android:id="@+id/city"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Kathmandu"
+                    android:textSize="15dp" />
+
+                <com.rey.material.widget.TextView
+                    android:id="@+id/country"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Nepal"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+            <com.rey.material.widget.TextView
+                android:id="@+id/contact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="Phone:"
+                android:textColor="@color/orangePrimaryD"
+                android:textSize="18dp" />
+
+            <com.rey.material.widget.TextView
+                android:id="@+id/phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="+977-9849754686"
+                android:textSize="15dp" />
+
+            <com.rey.material.widget.TextView
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="Email:"
+                android:textColor="@color/orangePrimaryD"
+                android:textSize="18dp" />
+
+            <com.rey.material.widget.TextView
+                android:id="@+id/primaryEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="bhandarisuraj81@gmail.com"
+                android:textSize="15dp" />
+
+            <com.rey.material.widget.TextView
+                android:id="@+id/secondaryEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="suraj.bhandari@worldlink.com.np"
+                android:textSize="15dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

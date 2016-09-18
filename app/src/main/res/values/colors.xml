@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryD">#5c6bc0</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="orangePrimary">#ff5722</color>
+    <color name="orangePrimaryD">#ff7043</color>
+    <color name="orangePrimaryDark">#e64a19</color>
+
+    <color name="purplePrimary">#673ab7</color>
+    <color name="purplePrimaryD">#7e57c2</color>
+    <color name="purplePrimaryDark">#512da8</color>
+
+    <color name="bluePrimary">#2196f3</color>
+    <color name="bluePrimaryD">#90caf9</color>
+    <color name="bluePrimaryDark">#1976d2</color>
+
+
+    <color name="fabButton">#00C853</color>
+    <color name="disable">#757575</color>
+
+
+    <color name="materialblue">#3f51b5</color>
+    <color name="green_complete">#ff99cc00</color>
+    <color name="statusbarcolor">#303F9F</color>
+
+    <color name="darkblue">#ff545d87</color>
+
+
+    <color name="materialpink">#ff4081</color>
+    <color name="materialfab">#ead324</color>
+    <color name="materialdarkpink">#f50057</color>
+
+    <color name="white">#ffffffff</color>
+    <color name="fakewhite">#fffefefe</color>
+    <color name="fragment_background">@null</color>
+    <color name="selected">#ff0a78dc</color>
+    <color name="grey">#37c8c8c8</color>
+    <color name="transparentgrey">#5a000000</color>
+
+    <color name="grey_text">#ffe3e3e3</color>
+    <color name="textgrey">#ffb4b4b4</color>
+    <color name="black">#ff1e1e1e</color>
+
+    <color name="about_gradient">#78474747</color>
+
+    <color name="appBack">#eee</color>
+    <color name="appFront">#fff1f1f1</color>
+    <color name="slidingDrawerColor">#fffcfcfc</color>
+    <color name="appDark">#1A237E</color>
+
+    <color name="cardBottom">#fff9f9f9</color>
+
+    <color name="shadowstartcolor">#502f2f2f</color>
+    <color name="shadowendcolor">#1cf7f7f7</color>
+
+    <color name="dark">#333333</color>
+
+    <color name="fade">#999999</color>
+    <color name="materialyellow">#ffa000</color>
+    <color name="materialdarkorange">#ffff763d</color>
+    <color name="materialorange">#ffff911e</color>
+    <color name="materialorange500">#ffff5722</color>
+    <color name="materialred">#f44336</color>
+    <color name="deeporange">#ff5722</color>
+    <color name="referimg">#26A69A</color>
+    <color name="materialgreen">#ff709635</color>
+    <color name="materiallightgreen">#ffa5dc4b</color>
+    <color name="online">#11A222</color>
+    <color name="darkgreen">#069c55</color>
+    <color name="purple">#ff9c27b0</color>
+    <color name="lightteal">#1FC4A1</color>
+
+    <color name="drawerselector">#ffe6e6e6</color>
+
+    <color name="transparentToolbar">#5a000000</color>r>
+
+    <color name="viewpagertabcolor">#ffffffff</color>
+    <color name="transparentmaterialblue">#d73f51b5</color>
+    <color name="transparentmaterialbluedark">#d7303F9F</color>
+
+    <color name="transparent_white">#edf4f4f4</color>
+
+
+</resources>

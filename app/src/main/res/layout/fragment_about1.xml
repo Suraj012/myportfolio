@@ -1,0 +1,429 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.user.myapps1st.Home_fragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:orientation="vertical">
+        <!-- TODO: Update blank fragment layout -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.rey.material.widget.TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Experience"
+                android:textColor="@color/purplePrimaryDark"
+                android:textSize="22dp"
+                android:textStyle="bold" />
+
+            <com.rey.material.widget.Button
+                android:id="@+id/add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:text="Add"
+                android:theme="@style/MyButton"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                app:rd_enable="true" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1">
+
+                <com.rey.material.widget.TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Android Developer"
+                    android:textColor="@color/purplePrimary"
+                    android:textSize="18dp" />
+
+                <com.rey.material.widget.TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Worldlink Infotech Pvt ltd"
+                    android:layout_marginTop="1dp"
+                    android:textColor="@color/purplePrimaryD"
+                    android:textStyle="italic"
+                    android:textSize="15dp" />
+
+
+                <com.rey.material.widget.TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:maxLines="4"
+                    android:text="Android Developer klaldfja lkjasd flk kljasd lj adfl lkhadf l asdjlf ljalsddf ljlad ljasdf lajdsdlflkjadf ljadslf..."
+                    android:textSize="15dp" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <View
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/circle"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <com.rey.material.widget.TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="4dp"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    android:text="2016 - Current"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="right|end">
+
+                <com.rey.material.widget.TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:layout_marginTop="4dp"
+                    android:textStyle="bold"
+                    android:layout_marginRight="10dp"
+                    android:text="2016 - Current"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/circle"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1">
+
+                <com.rey.material.widget.TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PHP Programmer"
+                    android:textColor="@color/purplePrimary"
+                    android:textSize="18dp" />
+
+                <com.rey.material.widget.TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Z-index media pvt ltd"
+                    android:layout_marginTop="1dp"
+                    android:textColor="@color/purplePrimaryD"
+                    android:textStyle="italic"
+                    android:textSize="15dp" />
+
+                <com.rey.material.widget.TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:maxLines="4"
+                    android:text="Android Developer klaldfja lkjasd flk kljasd lj adfl lkhadf l asdjlf ljalsddf ljlad ljasdf lajdsdlflkjadf ljadslf..."
+                    android:textSize="15dp" />
+
+            </LinearLayout>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="#ccc" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.rey.material.widget.TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Skills"
+                android:textColor="@color/purplePrimaryDark"
+                android:textSize="22dp"
+                android:textStyle="bold" />
+
+            <com.rey.material.widget.Button
+                android:id="@+id/addSkill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:text="Add"
+                android:theme="@style/MyButton"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                app:rd_enable="true" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="vertical">
+
+            <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                app:rcProgress="30"
+                app:rcSecondaryProgress="30"
+                app:rcMax="100"
+                app:rcRadius="5dp"
+                app:rcBackgroundPadding="2dp"
+                app:rcReverse="false"
+                app:rcProgressColor="@color/purplePrimaryDark"
+                app:rcSecondaryProgressColor="@color/colorAccent"
+                app:rcBackgroundColor="#E0E0E0" />
+
+            <com.rey.material.widget.TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Photoshop"
+                android:textSize="18dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginLeft="12dp"
+                android:textStyle="bold"
+                android:textColor="#fff"/>
+
+            <com.rey.material.widget.TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="30%"
+                android:textSize="18dp"
+                android:gravity="right"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginLeft="12dp"
+                android:textStyle="bold"
+                android:textColor="#fff"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="vertical">
+
+            <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                app:rcProgress="60"
+                app:rcSecondaryProgress="30"
+                app:rcMax="100"
+                app:rcRadius="5dp"
+                app:rcBackgroundPadding="2dp"
+                app:rcReverse="false"
+                app:rcProgressColor="@color/purplePrimaryDark"
+                app:rcSecondaryProgressColor="@color/colorAccent"
+                app:rcBackgroundColor="#E0E0E0" />
+
+            <com.rey.material.widget.TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="HTML/CSS"
+                android:textSize="18dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginLeft="12dp"
+                android:textStyle="bold"
+                android:textColor="#fff"/>
+
+            <com.rey.material.widget.TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="60%"
+                android:textSize="18dp"
+                android:gravity="right"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginLeft="12dp"
+                android:textStyle="bold"
+                android:textColor="#fff"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="vertical">
+
+            <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                app:rcProgress="70"
+                app:rcSecondaryProgress="30"
+                app:rcMax="100"
+                app:rcRadius="5dp"
+                app:rcBackgroundPadding="2dp"
+                app:rcReverse="false"
+                app:rcProgressColor="@color/purplePrimaryDark"
+                app:rcSecondaryProgressColor="@color/colorAccent"
+                app:rcBackgroundColor="#E0E0E0" />
+
+            <com.rey.material.widget.TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="JAVA"
+                android:textSize="18dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginLeft="12dp"
+                android:textStyle="bold"
+                android:textColor="#fff"/>
+
+            <com.rey.material.widget.TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="70%"
+                android:textSize="18dp"
+                android:gravity="right"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginLeft="12dp"
+                android:textStyle="bold"
+                android:textColor="#fff"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="vertical">
+
+            <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                app:rcProgress="50"
+                app:rcSecondaryProgress="30"
+                app:rcMax="100"
+                app:rcRadius="5dp"
+                app:rcBackgroundPadding="2dp"
+                app:rcReverse="false"
+                app:rcProgressColor="@color/purplePrimaryDark"
+                app:rcSecondaryProgressColor="@color/colorAccent"
+                app:rcBackgroundColor="#E0E0E0" />
+
+            <com.rey.material.widget.TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="PHP"
+                android:textSize="18dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginLeft="12dp"
+                android:textStyle="bold"
+                android:textColor="#fff"/>
+
+            <com.rey.material.widget.TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="50%"
+                android:textSize="18dp"
+                android:gravity="right"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginLeft="12dp"
+                android:textStyle="bold"
+                android:textColor="#fff"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="80dp"
+            android:orientation="vertical">
+
+            <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                app:rcProgress="70"
+                app:rcSecondaryProgress="30"
+                app:rcMax="100"
+                app:rcRadius="5dp"
+                app:rcBackgroundPadding="2dp"
+                app:rcReverse="false"
+                app:rcProgressColor="@color/purplePrimaryDark"
+                app:rcSecondaryProgressColor="@color/colorAccent"
+                app:rcBackgroundColor="#E0E0E0" />
+
+            <com.rey.material.widget.TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Android"
+                android:textSize="18dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginLeft="12dp"
+                android:textStyle="bold"
+                android:textColor="#fff"/>
+
+            <com.rey.material.widget.TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="70%"
+                android:textSize="18dp"
+                android:gravity="right"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginLeft="12dp"
+                android:textStyle="bold"
+                android:textColor="#fff"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</ScrollView>

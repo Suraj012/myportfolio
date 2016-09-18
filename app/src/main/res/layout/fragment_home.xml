@@ -1,0 +1,136 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.example.user.myapps1st.Home_fragment">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/profile_background"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center">
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:padding="10dp"
+        android:layout_gravity="center"
+        android:src="@drawable/profile"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.rey.material.widget.TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Suraj Bhandari"
+            android:textSize="22dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_marginTop="10dp"/>
+
+        <com.rey.material.widget.TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Android Programmer / Developer"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18dp"
+            android:gravity="center"/>
+
+        <com.rey.material.widget.TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="I'm Suraj Bhandari from Nepal
+A Android Programmer/Developer as well as a Daydreamer who works on the Worldlink Communication and sleeps all the day on the holiday!"
+            android:textSize="18dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="20dp">
+
+        <ImageButton
+            android:id="@+id/facebook"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="12dp"
+            android:background="@color/colorPrimary"
+            android:src="@drawable/facebook"/>
+
+        <ImageButton
+            android:id="@+id/google"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="12dp"
+            android:background="@color/orangePrimary"
+            android:src="@drawable/google"/>
+
+        <ImageButton
+            android:id="@+id/twitter"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="12dp"
+            android:background="@color/bluePrimary"
+            android:src="@drawable/twitter"/>
+
+        <ImageButton
+            android:id="@+id/instagram"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="12dp"
+            android:background="@color/colorAccent"
+            android:src="@drawable/instagram"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="80dp"
+        android:padding="10dp"
+        android:background="@drawable/download_background">
+
+        <com.rey.material.widget.TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Download CV"
+            android:layout_marginLeft="15dp"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:textColor="#fff"
+            android:layout_gravity="center_vertical"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/download"
+            android:layout_marginRight="15dp"
+            />
+
+    </LinearLayout>
+
+
+</LinearLayout>
+
+</ScrollView>

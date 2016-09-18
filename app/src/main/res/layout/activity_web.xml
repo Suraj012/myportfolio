@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.user.myapps1st.WebActivity">
+
+    <WebView
+        android:id="@+id/webview"
+        android:paddingTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+    </WebView>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       >
+<!--
+        <com.rey.material.widget.ProgressView
+            android:id="@+id/progressview"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            app:pv_autostart="true"
+            app:pv_circular="true"
+             android:layout_marginTop="250dp"
+            app:pv_progressMode="indeterminate"
+            app:pv_progressStyle="@style/Material.Drawable.CircularProgress.inout" />-->
+        <com.rey.material.widget.ProgressView
+             android:id="@+id/progressview"
+             android:layout_width="match_parent"
+             android:layout_height="5dp"
+             android:layout_gravity="top"
+             android:visibility="gone"
+             app:pv_autostart="true"
+             app:pv_circular="false"
+             app:pv_progressStyle="@style/Material.Drawable.LinearProgress.custom"
+             app:pv_progressMode="indeterminate"
+
+             />
+    </FrameLayout>
+</LinearLayout>
