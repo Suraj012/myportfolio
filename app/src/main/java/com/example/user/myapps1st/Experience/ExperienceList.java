@@ -69,15 +69,17 @@ public class ExperienceList extends AppCompatActivity implements SwipeRefreshLay
             refreshLayout.setRefreshing(false);
             AlertDialogClass.displaySnackBar(this, "Data Updated Successfully", R.color.purplePrimary);
         }
+        recyclerView = (RecyclerView) findViewById(R.id.recycler);
+        //recyclerView.setVisibility(View.VISIBLE);
 //        Fragment fragment = getFragmentManager().findFragmentByTag("about");
 //        FragmentTransaction ft = fragment.getFragmentManager().beginTransaction();
 //        ft.detach(fragment).attach(fragment);
         countE = mydb.selectExperienceInfo().size();
         Log.e("Count", String.valueOf(countE));
         if (countE > 0) {
-            recyclerView = (RecyclerView) findViewById(R.id.recycler);
             recyclerView.setHasFixedSize(true);
             ExperienceAdapter adapter = new ExperienceAdapter(this, mydb.selectExperienceInfo());
+            adapter.notifyDataSetChanged();
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             recyclerView.setAdapter(adapter);
             recyclerView.setVisibility(View.VISIBLE);
@@ -117,6 +119,7 @@ public class ExperienceList extends AppCompatActivity implements SwipeRefreshLay
 
         } else {
             errorE.setVisibility(View.VISIBLE);
+            recyclerView.setVisibility(View.GONE);
         }
     }
 

@@ -105,13 +105,14 @@ public class CategoryAdapter extends RecyclerSwipeAdapter<CategoryAdapter.Simple
 
                 builder = new AlertDialog.Builder(mContext);
                 builder.setCancelable(false);
-                builder.setMessage("Are you sure, You want to delete?");
+                builder.setMessage("Are you sure, You want to delete? Your all the project related to this will be deleted?");
                 builder.setView(view).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         int idd = Integer.parseInt(info.id);
                         Log.e("delete", String.valueOf(idd));
                         mydb.deleteCategoryInfo(String.valueOf(idd));
+                        mydb.deleteWorkInfo(String.valueOf(idd));
                         data.remove(position);
                         notifyItemRemoved(position);
                         CategoryList activity = (CategoryList) mContext;
@@ -157,7 +158,7 @@ public class CategoryAdapter extends RecyclerSwipeAdapter<CategoryAdapter.Simple
 
     @Override
     public int getItemCount() {
-        Log.e("Slkadfjkl;ze", String.valueOf(data.size()));
+        //Log.e("Slkadfjkl;ze", String.valueOf(data.size()));
         return data.size();
     }
 

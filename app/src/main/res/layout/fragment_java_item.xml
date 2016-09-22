@@ -56,6 +56,20 @@
                     android:paddingRight="@dimen/album_title_padding"
                     android:textSize="12dp" />
 
+                <TextView
+                    android:id="@+id/technology"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Java/Mysql"
+                    android:layout_below="@id/description"
+                    android:paddingBottom="@dimen/songs_count_padding_bottom"
+                    android:maxLines="3"
+                    android:textColor="@color/colorAccent"
+                    android:inputType="textMultiLine"
+                    android:paddingLeft="@dimen/album_title_padding"
+                    android:paddingRight="@dimen/album_title_padding"
+                    android:textSize="12dp" />
+
                 <!--<ImageView-->
                     <!--android:id="@+id/overflow"-->
                     <!--android:layout_width="@dimen/ic_album_overflow_width"-->

@@ -1,6 +1,7 @@
 package com.example.user.myapps1st.Experience;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -30,6 +31,7 @@ public class DialogOptionListExperience extends DialogFragment {
     DatabaseHelper mydb;
     String position;
     int editId, deleteId, detailId, id;
+    Activity activity;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -68,15 +70,17 @@ public class DialogOptionListExperience extends DialogFragment {
                     public void onClick(DialogInterface dialog, int which) {
                         ExperienceInfo info = mydb.getExperienceInfo(String.valueOf(id));
                         Log.e("delete", String.valueOf(info.id));
-                       // mydb.deleteExperienceInfo(info.id);
+                        //mydb.deleteExperienceInfo(info.id);
                         Log.e("Intent", intent);
-                       //  if(intent.equalsIgnoreCase("activity")) {
-                            ExperienceList experienceList = (ExperienceList) getActivity().getApplicationContext();
-                            experienceList.Refresh();
-                            dismiss();
-//                        }else{
-//                           // dismiss();
-//                        }
+                         if(intent.equalsIgnoreCase("activity")) {
+                             ExperienceList experienceList = (ExperienceList) activity;
+                             experienceList.Refresh();
+                             dismiss();
+                             //Toast.makeText(activity, "Activity", Toast.LENGTH_SHORT).show();
+                        }
+                         else{
+                             dismiss();
+                        }
                     }
                 }).setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
@@ -90,5 +94,11 @@ public class DialogOptionListExperience extends DialogFragment {
         });
         return builder.create();
 
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        this.activity = activity;
     }
 }

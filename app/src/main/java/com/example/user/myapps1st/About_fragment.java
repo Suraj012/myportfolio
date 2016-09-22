@@ -13,13 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.daimajia.androidanimations.library.Techniques;
-import com.daimajia.androidanimations.library.YoYo;
 import com.example.user.myapps1st.Adapter.ExperienceAdapter;
 import com.example.user.myapps1st.Adapter.SkillAdapter;
 import com.example.user.myapps1st.Database.DatabaseHelper;
 import com.example.user.myapps1st.Experience.DialogExperienceActivity;
-import com.example.user.myapps1st.Experience.DialogOptionListExperience;
 import com.example.user.myapps1st.Experience.ExperienceDetail;
 import com.example.user.myapps1st.Model.ExperienceInfo;
 import com.example.user.myapps1st.Model.SkillInfo;
@@ -146,16 +143,16 @@ public class About_fragment extends Fragment {
 
                             @Override
                             public void onItemLongPress(View childView, int position) {
-                                ArrayList<ExperienceInfo> list = mydb.selectExperienceInfo();
-                                final ExperienceInfo info = list.get(position);
-                                int id = Integer.parseInt(info.id);
-                                DialogOptionListExperience dialog = new DialogOptionListExperience();
-                                YoYo.with(Techniques.Pulse).duration(500);
-                                Bundle args = new Bundle();
-                                args.putInt("position", id);
-                                args.putString("intent","fragment");
-                                dialog.setArguments(args);
-                                dialog.show((getActivity()).getFragmentManager(), "Dialog_Option_List");
+//                                ArrayList<ExperienceInfo> list = mydb.selectExperienceInfo();
+//                                final ExperienceInfo info = list.get(position);
+//                                int id = Integer.parseInt(info.id);
+//                                DialogOptionListExperience dialog = new DialogOptionListExperience();
+//                                YoYo.with(Techniques.Pulse).duration(500);
+//                                Bundle args = new Bundle();
+//                                args.putInt("position", id);
+//                                args.putString("intent","fragment");
+//                                dialog.setArguments(args);
+//                                dialog.show((getActivity()).getFragmentManager(), "Dialog_Option_List");
                             }
                         }));
 
@@ -167,8 +164,15 @@ public class About_fragment extends Fragment {
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+        Log.e("Onpause", "Pause");
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
+        Log.e("Onresume", "Resume");
         Refresh();
 
 

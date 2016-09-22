@@ -660,7 +660,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     //Delete
     public void deleteWorkInfo(String id){
-        getWritableDatabase().delete("tbl_work", "id="+id, null);
+        getWritableDatabase().delete("tbl_work", "cid="+id, null);
     }
 
 

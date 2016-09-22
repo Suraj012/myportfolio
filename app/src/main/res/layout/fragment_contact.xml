@@ -70,7 +70,7 @@
                 android:gravity="center"
                 android:text="Address:"
                 android:textColor="@color/orangePrimaryD"
-                android:textSize="18dp" />
+                android:textSize="22dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -85,7 +85,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Nardevi"
-                    android:textSize="15dp" />
+                    android:textSize="18dp" />
 
                 <com.rey.material.widget.TextView
                     android:id="@+id/city"
@@ -93,7 +93,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Kathmandu"
-                    android:textSize="15dp" />
+                    android:textSize="18dp" />
 
                 <com.rey.material.widget.TextView
                     android:id="@+id/country"
@@ -101,7 +101,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Nepal"
-                    android:textSize="15dp" />
+                    android:textSize="18dp" />
             </LinearLayout>
 
             <com.rey.material.widget.TextView
@@ -112,7 +112,7 @@
                 android:gravity="center"
                 android:text="Phone:"
                 android:textColor="@color/orangePrimaryD"
-                android:textSize="18dp" />
+                android:textSize="22dp" />
 
             <com.rey.material.widget.TextView
                 android:id="@+id/phone"
@@ -120,7 +120,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="+977-9849754686"
-                android:textSize="15dp" />
+                android:textSize="18dp" />
 
             <com.rey.material.widget.TextView
                 android:id="@+id/email"
@@ -130,7 +130,7 @@
                 android:gravity="center"
                 android:text="Email:"
                 android:textColor="@color/orangePrimaryD"
-                android:textSize="18dp" />
+                android:textSize="22dp" />
 
             <com.rey.material.widget.TextView
                 android:id="@+id/primaryEmail"
@@ -138,7 +138,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="bhandarisuraj81@gmail.com"
-                android:textSize="15dp" />
+                android:textSize="18dp" />
 
             <com.rey.material.widget.TextView
                 android:id="@+id/secondaryEmail"
@@ -146,7 +146,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="suraj.bhandari@worldlink.com.np"
-                android:textSize="15dp" />
+                android:textSize="18dp" />
 
         </LinearLayout>
 

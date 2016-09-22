@@ -64,7 +64,7 @@ public class DialogWorkActivity extends AppCompatActivity {
         category.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {
             @Override
             public void onItemSelected(Spinner parent, View view, int position, long id) {
-               CategoryInfo info = mydb.selectCategoryInfo().get(position-1);
+                CategoryInfo info = mydb.selectCategoryInfo().get(position-1);
                 cid = info.id;
                 Log.e("CategoryId",cid);
             }

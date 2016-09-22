@@ -11,7 +11,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -161,7 +160,7 @@ public class WorkAdapter extends RecyclerSwipeAdapter<WorkAdapter.SimpleViewHold
 
     @Override
     public int getItemCount() {
-        Log.e("List", String.valueOf(data.size()));
+        //Log.e("List", String.valueOf(data.size()));
         return data.size();
     }
 

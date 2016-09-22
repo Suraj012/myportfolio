@@ -57,6 +57,7 @@ public class Work_fragment extends Fragment {
                 startActivity(intent);
             }
         });
+        //Category();
         return view;
     }
 
@@ -88,9 +89,9 @@ public class Work_fragment extends Fragment {
 
     @Override
     public void onResume() {
+        Log.e("Onresume", "Resume");
         super.onResume();
         Category();
-        Log.e("OnResume", "Resume");
     }
 
     @Override
