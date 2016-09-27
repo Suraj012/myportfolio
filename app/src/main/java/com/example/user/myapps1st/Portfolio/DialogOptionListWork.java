@@ -1,6 +1,7 @@
 package com.example.user.myapps1st.Portfolio;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -28,6 +29,7 @@ public class DialogOptionListWork extends DialogFragment {
     View view;
     Button edit, delete;
     DatabaseHelper mydb;
+    Activity activity;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -65,13 +67,14 @@ public class DialogOptionListWork extends DialogFragment {
                     public void onClick(DialogInterface dialog, int which) {
                         WorkInfo info = mydb.getWorkInfo(String.valueOf(id));
                         Log.e("delete", String.valueOf(info.id));
-                        mydb.deleteWorkInfo(info.id);
-//                        ((WorkList) getActivity()).Refresh();
+                        mydb.deleteWorkInfo1(info.id);
+                        ((PortfolioList) activity).Refresh();
                         dismiss();
                     }
                 }).setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        Log.e("ID", "ID");
                         dismiss();
                     }
                 });
@@ -80,5 +83,10 @@ public class DialogOptionListWork extends DialogFragment {
             }
         });
         return builder.create();
+    }
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        this.activity = activity;
     }
 }

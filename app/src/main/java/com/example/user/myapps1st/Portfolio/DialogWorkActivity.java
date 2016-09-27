@@ -42,7 +42,7 @@ public class DialogWorkActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_work_form);
-        getSupportActionBar().setTitle("Edit Work");
+        getSupportActionBar().setTitle("Add Portfolio");
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#2196f3")));
         add = (Button) findViewById(R.id.add);
         cancel = (Button) findViewById(R.id.cancel);
@@ -72,6 +72,7 @@ public class DialogWorkActivity extends AppCompatActivity {
 
         id = getIntent().getIntExtra("id", 0);
         if (id != 0) {
+            getSupportActionBar().setTitle("Edit Portfolio");
             WorkInfo info = mydb.getWorkInfo(id + "");
             add.setText("Update");
             title.setText(info.title);
@@ -99,10 +100,11 @@ public class DialogWorkActivity extends AppCompatActivity {
         String descriptionValue = description.getText().toString();
         String categoryValue = category.getSelectedItem().toString();
         String technologyValue = technology.getText().toString();
-        if (titleValue.isEmpty() || descriptionValue.isEmpty() || categoryValue.isEmpty() || technologyValue.isEmpty()) {
-            titleLayout.setError("Enter title");
-            descLayout.setError("Enter description");
-            technologyLayout.setError("Enter technology used");
+        if (titleValue.isEmpty() || descriptionValue.isEmpty() || categoryValue.isEmpty() || technologyValue.isEmpty() || categoryValue.equalsIgnoreCase("Choose Category")) {
+//            titleLayout.setError("Enter title");
+//            descLayout.setError("Enter description");
+//            technologyLayout.setError("Enter technology used");
+            Toast.makeText(DialogWorkActivity.this, "Please fill all the information..!", Toast.LENGTH_SHORT).show();
         } else {
             if (id == 0) {
                 boolean insert = mydb.insertWorkInfo(cid, titleValue, descriptionValue,technologyValue,categoryValue);

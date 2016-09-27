@@ -472,6 +472,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return list;
     }
 
+    public ArrayList<PortfolioInfo> selectPortfolioInfo2(String id){
+        ArrayList<PortfolioInfo>list = new ArrayList<PortfolioInfo>();
+        String select = "SELECT * FROM tbl_portfolio where id="+id;
+
+        Cursor cursor = getWritableDatabase().rawQuery(select, null);
+        while (cursor.moveToNext()){
+            PortfolioInfo info = new PortfolioInfo();
+            info.id = cursor.getString(cursor.getColumnIndex("id"));
+            info.category = cursor.getString(cursor.getColumnIndex("category"));
+            info.cid = cursor.getString(cursor.getColumnIndex("cid"));
+            info.title = cursor.getString(cursor.getColumnIndex("title"));
+            info.description = cursor.getString(cursor.getColumnIndex("description"));
+            list.add(info);
+        }
+        cursor.close();
+        return list;
+    }
+
     public PortfolioInfo getPortfolioInfo(String id){
 
         String select = "SELECT * FROM tbl_portfolio where id="+id ;
@@ -486,6 +504,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         cursor.close();
         return info;
+    }
+    public ArrayList<PortfolioInfo> getPortfolioInfoList(String id){
+        ArrayList<PortfolioInfo>list = new ArrayList<PortfolioInfo>();
+        String select = "SELECT * FROM tbl_portfolio where id="+id ;
+        Cursor cursor = getWritableDatabase().rawQuery(select, null);
+        PortfolioInfo info = new PortfolioInfo();
+        while (cursor.moveToNext()){
+            info.id = cursor.getString(cursor.getColumnIndex("id"));
+            info.category = cursor.getString(cursor.getColumnIndex("category"));
+            info.cid = cursor.getString(cursor.getColumnIndex("cid"));
+            info.title = cursor.getString(cursor.getColumnIndex("title"));
+            info.description = cursor.getString(cursor.getColumnIndex("description"));
+            list.add(info);
+        }
+        cursor.close();
+        return list;
     }
 
     //Update
@@ -625,6 +659,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return list;
     }
 
+    public ArrayList<WorkInfo> selectWorkInfo2(String id){
+        ArrayList<WorkInfo>list = new ArrayList<WorkInfo>();
+        String select = "SELECT * FROM tbl_work where cid =" +id;
+
+        Cursor cursor = getWritableDatabase().rawQuery(select, null);
+        while (cursor.moveToNext()){
+            WorkInfo info = new WorkInfo();
+            info.id = cursor.getString(cursor.getColumnIndex("id"));
+            info.cid = cursor.getString(cursor.getColumnIndex("cid"));
+            info.title = cursor.getString(cursor.getColumnIndex("title"));
+            info.category = cursor.getString(cursor.getColumnIndex("category"));
+            info.technology = cursor.getString(cursor.getColumnIndex("technology"));
+            info.description = cursor.getString(cursor.getColumnIndex("description"));
+            list.add(info);
+        }
+        cursor.close();
+        return list;
+    }
+
     public WorkInfo getWorkInfo(String id){
 
         String select = "SELECT * FROM tbl_work where id="+id ;
@@ -661,6 +714,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //Delete
     public void deleteWorkInfo(String id){
         getWritableDatabase().delete("tbl_work", "cid="+id, null);
+    }
+    public void deleteWorkInfo1(String id){
+        getWritableDatabase().delete("tbl_work", "id="+id, null);
     }
 
 

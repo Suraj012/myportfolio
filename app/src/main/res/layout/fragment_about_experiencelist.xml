@@ -47,12 +47,13 @@
         android:layout_height="wrap_content"
         swipe:cardElevation="2dp"
         android:orientation="vertical"
+        swipe:cardUseCompatPadding="true"
         app:cardCornerRadius="2dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp"
+            android:padding="16dp"
             android:orientation="vertical">
 
             <com.rey.material.widget.TextView

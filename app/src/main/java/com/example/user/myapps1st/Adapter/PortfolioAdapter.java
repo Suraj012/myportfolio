@@ -20,26 +20,26 @@ import android.widget.Toast;
 import com.daimajia.swipe.SwipeLayout;
 import com.daimajia.swipe.adapters.RecyclerSwipeAdapter;
 import com.example.user.myapps1st.Database.DatabaseHelper;
-import com.example.user.myapps1st.Model.CategoryInfo;
-import com.example.user.myapps1st.Portfolio.CategoryList;
+import com.example.user.myapps1st.Model.WorkInfo;
 import com.example.user.myapps1st.R;
 
 import java.util.ArrayList;
 
-public class CategoryAdapter extends RecyclerSwipeAdapter<CategoryAdapter.SimpleViewHolder> {
-    ArrayList<CategoryInfo> data = new ArrayList<>();
+public class PortfolioAdapter extends RecyclerSwipeAdapter<PortfolioAdapter.SimpleViewHolder> {
+    ArrayList<WorkInfo> data = new ArrayList<>();
     private int id;
     DatabaseHelper mydb;
 
     public class SimpleViewHolder extends RecyclerView.ViewHolder {
-        TextView title, count;
+        TextView title, technology, description;
         SwipeLayout swipeLayout;
 
         @TargetApi(Build.VERSION_CODES.M)
         public SimpleViewHolder(final View itemView) {
             super(itemView);
             title = (TextView) itemView.findViewById(R.id.title);
-            count = (TextView) itemView.findViewById(R.id.count);
+            technology = (TextView) itemView.findViewById(R.id.technology);
+            description = (TextView) itemView.findViewById(R.id.description);
             swipeLayout = (SwipeLayout) itemView.findViewById(R.id.swipe);
             mydb = new DatabaseHelper(mContext);
 
@@ -49,19 +49,20 @@ public class CategoryAdapter extends RecyclerSwipeAdapter<CategoryAdapter.Simple
 //                public void onClick(View view) {
 //                    if (swipeLayout.getOpenStatus() == SwipeLayout.Status.Close) {
 //                        int position = getLayoutPosition();
-//                        ArrayList<CategoryInfo> list = mydb.selectCategoryInfo();
-//                        final CategoryInfo info = list.get(position);
+//                        ArrayList<WorkInfo> list = mydb.selectWorkInfo();
+//                        final WorkInfo info = list.get(position);
 //                        int idd = Integer.parseInt(info.id);
 //
-//                        Intent intent = new Intent(mContext, PortfolioList.class);
+//                        Intent intent = new Intent(mContext, WorkDetail.class);
 //                        intent.putExtra("position", idd);
 //                        mContext.startActivity(intent);
-//                        Log.e("CategoryId", String.valueOf(idd));
+//                        Log.e("PortfolioId", String.valueOf(idd));
 //                    } else {
 //                        //Toast.makeText(view.getContext(),"Something went wrong.Plzz try again.", Toast.LENGTH_SHORT).show();
 //                    }
 //                }
 //            });
+
 
         }
     }
@@ -71,7 +72,7 @@ public class CategoryAdapter extends RecyclerSwipeAdapter<CategoryAdapter.Simple
     View view;
 
 
-    public CategoryAdapter(Context context, ArrayList<CategoryInfo> info) {
+    public PortfolioAdapter(Context context, ArrayList<WorkInfo> info) {
         this.mContext = context;
         this.data = info;
     }
@@ -79,18 +80,19 @@ public class CategoryAdapter extends RecyclerSwipeAdapter<CategoryAdapter.Simple
     @Override
     public SimpleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_portfolio_categorylist, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_portfolio_list, parent, false);
         return new SimpleViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(final SimpleViewHolder viewHolder, final int position) {
+        Log.e("Data", "data");
 
-        final CategoryInfo info = data.get(position);
-        String c = String.valueOf(position + 1);
-        viewHolder.count.setText(c +") ");
-        viewHolder.title.setText(info.category);
-
+        WorkInfo info = data.get(position);
+        id = Integer.parseInt(info.id);
+        viewHolder.title.setText(info.title);
+        viewHolder.technology.setText(info.technology);
+        viewHolder.description.setText(info.description);
 
         viewHolder.swipeLayout.addSwipeListener(new SwipeLayout.SwipeListener() {
             @Override
@@ -103,18 +105,10 @@ public class CategoryAdapter extends RecyclerSwipeAdapter<CategoryAdapter.Simple
 
                 builder = new AlertDialog.Builder(mContext);
                 builder.setCancelable(false);
-                builder.setMessage("Are you sure, You want to delete? Your all the project related to this will be deleted?");
+                builder.setMessage("Are you sure, You want to delete?");
                 builder.setView(view).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        int idd = Integer.parseInt(info.id);
-                        Log.e("delete", String.valueOf(idd));
-                        mydb.deleteCategoryInfo(String.valueOf(idd));
-                        mydb.deleteWorkInfo(String.valueOf(idd));
-                        data.remove(position);
-                        notifyItemRemoved(position);
-                        CategoryList activity = (CategoryList) mContext;
-                        activity.Refresh();
                         viewHolder.swipeLayout.close();
                         Toast.makeText(layout.getContext(), "Deleted", Toast.LENGTH_SHORT).show();
                     }
@@ -156,7 +150,7 @@ public class CategoryAdapter extends RecyclerSwipeAdapter<CategoryAdapter.Simple
 
     @Override
     public int getItemCount() {
-        //Log.e("Slkadfjkl;ze", String.valueOf(data.size()));
+        Log.e("List", String.valueOf(data.size()));
         return data.size();
     }
 

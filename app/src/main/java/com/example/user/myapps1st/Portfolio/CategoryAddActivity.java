@@ -47,7 +47,7 @@ public class CategoryAddActivity extends AppCompatActivity {
         category = (EditText) findViewById(R.id.category);
         categoryLayout = (TextInputLayout) findViewById(R.id.categorylayout);
         mydb = new DatabaseHelper(this);
-        id = getIntent().getIntExtra("position", 0);
+        id = getIntent().getIntExtra("id", 0);
         Log.e("Category", String.valueOf(id));
 
         if (id != 0) {

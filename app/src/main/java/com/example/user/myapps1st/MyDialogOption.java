@@ -21,9 +21,7 @@ import com.example.user.myapps1st.Model.ContactInfo;
 import com.example.user.myapps1st.Model.ExperienceInfo;
 import com.example.user.myapps1st.Model.ProfileInfo;
 import com.example.user.myapps1st.Model.SkillInfo;
-import com.example.user.myapps1st.Model.WorkInfo;
 import com.example.user.myapps1st.Portfolio.CategoryList;
-import com.example.user.myapps1st.Portfolio.WorkList;
 import com.example.user.myapps1st.Profile.ProfileActivity;
 import com.example.user.myapps1st.Skill.SkillList;
 import com.rey.material.widget.Button;
@@ -52,7 +50,6 @@ public class MyDialogOption extends DialogFragment {
         profile = (Button) view.findViewById(R.id.profile);
         experience = (Button) view.findViewById(R.id.experience);
         skill = (Button) view.findViewById(R.id.skill);
-        portfolio = (Button) view.findViewById(R.id.portfolio);
         category = (Button) view.findViewById(R.id.category);
         contact = (Button) view.findViewById(R.id.contact);
 
@@ -150,26 +147,6 @@ public class MyDialogOption extends DialogFragment {
                 dismiss();
             }
         });
-        portfolio.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mydb = new DatabaseHelper(getActivity());
-                ArrayList<WorkInfo> list = mydb.selectWorkInfo();
-                for (int i = 0; i < list.size(); i++) {
-                    final WorkInfo info = list.get(i);
-                    position = info.id;
-                    portfolioId = Integer.parseInt(position);
-                    Log.e("ID", String.valueOf(contactId));
-                }
-
-                Intent intent = new Intent(getActivity(), WorkList.class);
-                intent.putExtra("id", portfolioId);
-                startActivity(intent);
-                dismiss();
-            }
-        });
-
-
 
         return builder.create();
 

@@ -42,24 +42,12 @@
         app:rd_enable="true" />
 
     <com.rey.material.widget.Button
-        android:id="@+id/portfolio"
-        android:gravity="left"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:text="Portfolio"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        app:rd_enable="true" />
-
-    <com.rey.material.widget.Button
         android:id="@+id/category"
         android:gravity="left"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:text="Portfolio Category"
+        android:text="Portfolio"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:textAppearance="?android:attr/textAppearanceLarge"

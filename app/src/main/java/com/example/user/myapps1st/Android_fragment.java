@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.user.myapps1st.Adapter.JavaAdapter;
 import com.example.user.myapps1st.Database.DatabaseHelper;
@@ -57,10 +59,12 @@ public class Android_fragment extends Fragment {
         JavaAdapter adapter = new JavaAdapter(getActivity(), mydb.selectWorkInfo());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        Log.e("Clicked1", "Clicked");
         recyclerView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Log.e("Clicked", "Clicked");
+                Toast.makeText(getActivity(), "Clicked", Toast.LENGTH_SHORT).show();
             }
         });
         return view;

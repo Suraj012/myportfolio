@@ -29,7 +29,7 @@
         <ImageButton
             android:id="@+id/home"
             android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_height="70dp"
             android:layout_weight="1"
             android:background="@color/colorPrimaryD"
             android:src="@drawable/home1" />
@@ -37,7 +37,7 @@
         <ImageButton
             android:id="@+id/profile"
             android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_height="70dp"
             android:layout_weight="1"
             android:background="@color/purplePrimaryD"
             android:src="@drawable/outline1" />
@@ -45,7 +45,7 @@
         <ImageButton
             android:id="@+id/work"
             android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_height="70dp"
             android:layout_weight="1"
             android:background="@color/bluePrimaryD"
             android:src="@drawable/work" />
@@ -53,7 +53,7 @@
         <ImageButton
             android:id="@+id/contact"
             android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_height="70dp"
             android:layout_weight="1"
             android:background="@color/orangePrimaryD"
             android:src="@drawable/contact" />

@@ -34,7 +34,7 @@ public class JavaAdapter extends RecyclerView.Adapter<JavaAdapter.ViewHolder> {
        // Log.e("lkajdf","alksdjf");
         WorkInfo info = data.get(position);
         Log.e("Data", String.valueOf(data));
-        holder.title.setText(info.cid);
+        holder.title.setText(info.title);
         holder.description.setText(info.description);
         holder.technology.setText(info.technology);
     }

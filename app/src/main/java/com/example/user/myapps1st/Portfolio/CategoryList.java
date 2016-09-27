@@ -14,10 +14,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.example.user.myapps1st.Adapter.CategoryAdapter;
 import com.example.user.myapps1st.AlertDialogClass;
 import com.example.user.myapps1st.Database.DatabaseHelper;
+import com.example.user.myapps1st.Model.CategoryInfo;
 import com.example.user.myapps1st.R;
+import com.example.user.myapps1st.util.RecyclerItemClickListener;
+
+import java.util.ArrayList;
 
 public class CategoryList extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
     RecyclerView recyclerView;
@@ -31,7 +37,7 @@ public class CategoryList extends AppCompatActivity implements SwipeRefreshLayou
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_list);
-        getSupportActionBar().setTitle("Category Lists");
+        getSupportActionBar().setTitle("Portfolio Lists");
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#2196f3")));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         errorE = (TextView) findViewById(R.id.errorE);
@@ -84,6 +90,7 @@ public class CategoryList extends AppCompatActivity implements SwipeRefreshLayou
     }
 
     public void Refresh() {
+        recyclerView = (RecyclerView) findViewById(R.id.recycler);
         if(refreshLayout.isRefreshing()){
             refreshLayout.setRefreshing(false);
             AlertDialogClass.displaySnackBar(this, "Data Updated Successfully", R.color.bluePrimary);
@@ -91,7 +98,6 @@ public class CategoryList extends AppCompatActivity implements SwipeRefreshLayou
         count = mydb.selectCategoryInfo().size();
         Log.e("Counted", String.valueOf(count));
         if(count > 0) {
-            recyclerView = (RecyclerView) findViewById(R.id.recycler);
             recyclerView.setHasFixedSize(true);
             CategoryAdapter adapter = new CategoryAdapter(this, mydb.selectCategoryInfo());
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -102,6 +108,34 @@ public class CategoryList extends AppCompatActivity implements SwipeRefreshLayou
         }else{
             errorE.setVisibility(View.VISIBLE);
         }
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View childView, int position) {
+                ArrayList<CategoryInfo> list = mydb.selectCategoryInfo();
+                final CategoryInfo info = list.get(position);
+                int idd = Integer.parseInt(info.id);
+                Intent intent = new Intent(CategoryList.this, PortfolioList.class);
+                intent.putExtra("position", idd);
+                intent.putExtra("title", info.category);
+                startActivity(intent);
+                Log.e("CategoryId", String.valueOf(idd));
+            }
+
+            @Override
+            public void onItemLongPress(View childView, int position) {
+                ArrayList<CategoryInfo> list = mydb.selectCategoryInfo();
+                final CategoryInfo info = list.get(position);
+                int id = Integer.parseInt(info.id);
+                Log.e("ID", String.valueOf(id));
+                DialogOptionListCategory dialog = new DialogOptionListCategory();
+                YoYo.with(Techniques.Pulse).duration(500);
+                Bundle args = new Bundle();
+                args.putInt("position", id);
+                dialog.setArguments(args);
+                dialog.show(getFragmentManager(), "Dialog_Option_List");
+            }
+        }) {
+        });
     }
 
     @Override

@@ -6,4 +6,5 @@ public class PortfolioInfo {
     public String cid;
     public String title;
     public String description;
+    public String technology;
 }
