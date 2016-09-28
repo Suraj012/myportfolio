@@ -8,4 +8,6 @@ public class ContactInfo {
     public String phone;
     public String primary_email;
     public String secondary_email;
+    public double latitude;
+    public double longitude;
 }

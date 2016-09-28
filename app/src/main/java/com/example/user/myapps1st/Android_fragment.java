@@ -24,7 +24,7 @@ import com.example.user.myapps1st.Portfolio.DialogWorkActivity;
 public class Android_fragment extends Fragment {
     DatabaseHelper mydb;
     View fab,fabc;
-
+    RecyclerView recyclerView;
 
     public Android_fragment() {
         // Required empty public constructor
@@ -39,6 +39,7 @@ public class Android_fragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_android, container, false);
         fab = view.findViewById(R.id.fab);
         fabc = view.findViewById(R.id.fabc);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recycler);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +55,6 @@ public class Android_fragment extends Fragment {
                 startActivity(intent);
             }
         });
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler);
         recyclerView.setHasFixedSize(true);
         JavaAdapter adapter = new JavaAdapter(getActivity(), mydb.selectWorkInfo());
         recyclerView.setAdapter(adapter);
@@ -68,5 +68,23 @@ public class Android_fragment extends Fragment {
             }
         });
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        recyclerView.removeAllViews();
+        recyclerView.setHasFixedSize(true);
+        JavaAdapter adapter = new JavaAdapter(getActivity(), mydb.selectWorkInfo());
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        Log.e("Clicked1", "Clicked");
+        recyclerView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("Clicked", "Clicked");
+                Toast.makeText(getActivity(), "Clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

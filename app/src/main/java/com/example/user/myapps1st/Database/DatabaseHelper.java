@@ -78,6 +78,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             +" `address` TEXT,"
             +" `city` TEXT,"
             +" `country` TEXT,"
+            +" `latitude` DOUBLE,"
+            +" `longitude` DOUBLE,"
             +" `phone` BLOB,"
             +" `primary_email` TEXT,"
             +" `secondary_email` TEXT,"
@@ -546,11 +548,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //Contact database
 
     //Insert
-    public boolean insertContactInfo(String address, String city ,String country, String phone, String primary_email, String secondary_email){
+    public boolean insertContactInfo(String address, String city ,String country,double latitude, double longitude, String phone, String primary_email, String secondary_email){
         ContentValues cv = new ContentValues();
         cv.put("address", address);
         cv.put("city", city);
         cv.put("country", country);
+        cv.put("latitude", latitude);
+        cv.put("longitude", longitude);
         cv.put("phone", phone);
         cv.put("primary_email", primary_email);
         cv.put("secondary_email", secondary_email);
@@ -573,6 +577,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             info.address = cursor.getString(cursor.getColumnIndex("address"));
             info.city = cursor.getString(cursor.getColumnIndex("city"));
             info.country = cursor.getString(cursor.getColumnIndex("country"));
+            info.latitude = cursor.getDouble(cursor.getColumnIndex("latitude"));
+            info.longitude = cursor.getDouble(cursor.getColumnIndex("longitude"));
             info.phone = cursor.getString(cursor.getColumnIndex("phone"));
             info.primary_email = cursor.getString(cursor.getColumnIndex("primary_email"));
             info.secondary_email = cursor.getString(cursor.getColumnIndex("secondary_email"));
@@ -592,6 +598,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             info.address = cursor.getString(cursor.getColumnIndex("address"));
             info.city = cursor.getString(cursor.getColumnIndex("city"));
             info.country = cursor.getString(cursor.getColumnIndex("country"));
+            info.latitude = cursor.getDouble(cursor.getColumnIndex("latitude"));
+            info.longitude = cursor.getDouble(cursor.getColumnIndex("longitude"));
             info.phone = cursor.getString(cursor.getColumnIndex("phone"));
             info.primary_email = cursor.getString(cursor.getColumnIndex("primary_email"));
             info.secondary_email = cursor.getString(cursor.getColumnIndex("secondary_email"));
@@ -601,12 +609,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //Update
-    public boolean editContactInfo(String id, String address, String city ,String country, String phone, String primary_email, String secondary_email){
+    public boolean editContactInfo(String id, String address, String city ,String country, double latitude, double longitude, String phone, String primary_email, String secondary_email){
         ContentValues cv = new ContentValues();
         cv.put("id", id);
         cv.put("address", address);
         cv.put("city", city);
         cv.put("country", country);
+        cv.put("latitude", latitude);
+        cv.put("longitude", longitude);
         cv.put("phone", phone);
         cv.put("primary_email", primary_email);
         cv.put("secondary_email", secondary_email);

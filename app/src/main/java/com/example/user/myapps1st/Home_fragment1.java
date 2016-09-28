@@ -104,7 +104,7 @@ ImageButton facebook, google, twitter, instagram;
 //                    startActivity(browserIntent);
                     Intent intent = new Intent(getContext(), WebActivity.class);
                     intent.putExtra("title", "Instagram");
-                    intent.putExtra("url", instagramUrl);
+                    intent.putExtra("url", "https://www.instagram.com/"+instagramUrl);
                     startActivity(intent);
                 }
             });
