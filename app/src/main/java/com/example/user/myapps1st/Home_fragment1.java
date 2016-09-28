@@ -29,7 +29,7 @@ public class Home_fragment1 extends Fragment {
 ImageButton facebook, google, twitter, instagram;
     Button add;
     DatabaseHelper mydb;
-    TextView name, designation, description, error;
+    TextView name, designation, description,websites, error;
     LinearLayout download,share;
     ImageView profile;
     String facebookUrl, googleUrl, twitterUrl, instagramUrl;
@@ -52,6 +52,7 @@ ImageButton facebook, google, twitter, instagram;
         google = (ImageButton) view.findViewById(R.id.google);
         twitter = (ImageButton) view.findViewById(R.id.twitter);
         instagram = (ImageButton) view.findViewById(R.id.instagram);
+        websites = (TextView) view.findViewById(R.id.websites);
         add = (Button) view.findViewById(R.id.add);
         name = (TextView) view.findViewById(R.id.name);
         designation = (TextView) view.findViewById(R.id.designation);
@@ -67,6 +68,7 @@ ImageButton facebook, google, twitter, instagram;
             designation.setVisibility(View.VISIBLE);
             description.setVisibility(View.VISIBLE);
             share.setVisibility(View.VISIBLE);
+            websites.setVisibility(View.VISIBLE);
             download.setVisibility(View.VISIBLE);
             error.setVisibility(View.GONE);
             add.setVisibility(View.GONE);
@@ -113,6 +115,7 @@ ImageButton facebook, google, twitter, instagram;
             name.setVisibility(View.GONE);
             designation.setVisibility(View.GONE);
             description.setVisibility(View.GONE);
+            websites.setVisibility(View.GONE);
             share.setVisibility(View.GONE);
             download.setVisibility(View.GONE);
             error.setVisibility(View.VISIBLE);
@@ -138,6 +141,7 @@ ImageButton facebook, google, twitter, instagram;
             name.setVisibility(View.VISIBLE);
             designation.setVisibility(View.VISIBLE);
             description.setVisibility(View.VISIBLE);
+            websites.setVisibility(View.VISIBLE);
             share.setVisibility(View.VISIBLE);
             download.setVisibility(View.VISIBLE);
             error.setVisibility(View.GONE);
@@ -150,6 +154,16 @@ ImageButton facebook, google, twitter, instagram;
             name.setText(info.name);
     		designation.setText(info.designation);
             description.setText(info.description);
+            websites.setText("https://"+info.websites);
+            websites.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getContext(), WebActivity.class);
+                    intent.putExtra("title", "Websites");
+                    intent.putExtra("url", "http://"+info.websites);
+                    startActivity(intent);
+                }
+            });
 		}
     }
     @Override

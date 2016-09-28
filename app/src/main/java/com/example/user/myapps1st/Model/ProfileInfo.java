@@ -9,4 +9,5 @@ public class ProfileInfo {
 	public String google;
 	public String twitter;
 	public String instagram;
+	public String websites;
 }

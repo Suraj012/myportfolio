@@ -46,6 +46,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             +" `google`	TEXT,"
             +" `twitter`	TEXT,"
             +" `instagram`	TEXT,"
+            +" `websites`	TEXT,"
             +" `description`	TEXT)";
 
     String createExperienceTable = "CREATE TABLE IF NOT EXISTS `tbl_experience` ("
@@ -149,7 +150,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //Insert
-    public boolean insertProfileInfo(String name, String designation, String description, String facebook, String google, String twitter, String instagram){
+    public boolean insertProfileInfo(String name, String designation, String description, String facebook, String google, String twitter, String instagram, String websites){
         ContentValues cv = new ContentValues();
         cv.put("name", name);
         cv.put("designation", designation);
@@ -158,6 +159,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cv.put("google", google);
         cv.put("twitter", twitter);
         cv.put("instagram", instagram);
+        cv.put("websites", websites);
         long result = getWritableDatabase().insert("tbl_profile", "", cv);
         if(result == -1)
             return false;
@@ -181,6 +183,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             info.google = cursor.getString(cursor.getColumnIndex("google"));
             info.twitter = cursor.getString(cursor.getColumnIndex("twitter"));
             info.instagram = cursor.getString(cursor.getColumnIndex("instagram"));
+            info.websites = cursor.getString(cursor.getColumnIndex("websites"));
 
             list.add(info);
         }
@@ -202,13 +205,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             info.google = cursor.getString(cursor.getColumnIndex("google"));
             info.twitter = cursor.getString(cursor.getColumnIndex("twitter"));
             info.instagram = cursor.getString(cursor.getColumnIndex("instagram"));
+            info.websites = cursor.getString(cursor.getColumnIndex("websites"));
         }
         cursor.close();
         return info;
     }
 
     //Update
-    public boolean editProfileInfo(String id, String name, String designation, String description, String facebook, String google, String twitter, String instagram){
+    public boolean editProfileInfo(String id, String name, String designation, String description, String facebook, String google, String twitter, String instagram, String websites){
         ContentValues cv = new ContentValues();
         cv.put("id", id);
         cv.put("name", name);
@@ -218,6 +222,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cv.put("google", google);
         cv.put("twitter", twitter);
         cv.put("instagram", instagram);
+        cv.put("websites", websites);
         long result = getWritableDatabase().update("tbl_profile",cv,"id="+id,null);
         if(result == -1)
             return false;

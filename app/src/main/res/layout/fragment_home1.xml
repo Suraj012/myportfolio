@@ -85,6 +85,18 @@
             android:layout_marginRight="30dp"
             android:gravity="center"/>
 
+        <com.rey.material.widget.TextView
+            android:id="@+id/websites"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="surajbhandari.com.np"
+            android:textColor="@color/materialred"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:gravity="center"/>
+
     </LinearLayout>
 
     <LinearLayout

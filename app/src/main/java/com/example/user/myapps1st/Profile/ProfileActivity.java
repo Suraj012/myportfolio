@@ -20,9 +20,9 @@ import com.rey.material.widget.Button;
  */
 public class ProfileActivity extends AppCompatActivity{
     Button add, cancel;
-    EditText name, designation, facebook, google, twitter, instagram, description;
+    EditText name, designation, facebook, google, twitter, instagram, description,websites;
     DatabaseHelper mydb;
-    TextInputLayout nameLayout, designationLayout, descriptionLayout, facebookLayout, googleLayout, twitterLayout, instagramLayout;
+    TextInputLayout nameLayout, designationLayout, descriptionLayout, facebookLayout, googleLayout, twitterLayout, instagramLayout,websitesLayout;
     int id;
 
     @Override
@@ -44,6 +44,7 @@ public class ProfileActivity extends AppCompatActivity{
         twitter = (EditText) findViewById(R.id.twitter);
         instagram = (EditText) findViewById(R.id.instagram);
         description = (EditText) findViewById(R.id.description);
+        websites = (EditText) findViewById(R.id.websites);
 
         nameLayout = (TextInputLayout) findViewById(R.id.nameLayout);
         designationLayout = (TextInputLayout) findViewById(R.id.designationLayout);
@@ -52,6 +53,7 @@ public class ProfileActivity extends AppCompatActivity{
         googleLayout = (TextInputLayout) findViewById(R.id.googleLayout);
         twitterLayout = (TextInputLayout) findViewById(R.id.twitterLayout);
         instagramLayout = (TextInputLayout) findViewById(R.id.instagramLayout);
+        websitesLayout = (TextInputLayout) findViewById(R.id.websitesLayout);
 
         id = getIntent().getIntExtra("id", 0);
 
@@ -65,6 +67,7 @@ public class ProfileActivity extends AppCompatActivity{
             google.setText(info.google);
             twitter.setText(info.twitter);
             instagram.setText(info.instagram);
+            websites.setText(info.websites);
         }
 
         AddData();
@@ -93,6 +96,7 @@ public class ProfileActivity extends AppCompatActivity{
                                        String twittervalue = twitter.getText().toString();
                                        String instagramvalue = instagram.getText().toString();
                                        String descriptionvalue = description.getText().toString();
+                                       String websitesvalue = websites.getText().toString();
                                        if (namevalue.isEmpty() || designationvalue.isEmpty() || facebookvalue.isEmpty() || googlevalue.isEmpty() || twittervalue.isEmpty() || instagramvalue.isEmpty() || descriptionvalue.isEmpty()) {
                                            nameLayout.setError("Enter name");
                                            designationLayout.setError("Enter designation");
@@ -103,7 +107,7 @@ public class ProfileActivity extends AppCompatActivity{
                                            instagramLayout.setError("Enter instagram url");
                                        } else {
                                            if (id == 0) {
-                                               boolean insert = mydb.insertProfileInfo(namevalue, designationvalue, descriptionvalue, facebookvalue, googlevalue, twittervalue, instagramvalue);
+                                               boolean insert = mydb.insertProfileInfo(namevalue, designationvalue, descriptionvalue, facebookvalue, googlevalue, twittervalue, instagramvalue,websitesvalue);
                                                if (insert == true) {
                                                   // Toast.makeText(ProfileActivity.this, "Data Inserted Successfully", Toast.LENGTH_LONG).show();
                                                    finish();
@@ -112,7 +116,7 @@ public class ProfileActivity extends AppCompatActivity{
                                                } else
                                                    Toast.makeText(ProfileActivity.this, "Something went wrong...!", Toast.LENGTH_LONG).show();
                                            } else {
-                                               boolean insert = mydb.editProfileInfo(String.valueOf(id), namevalue, designationvalue, descriptionvalue, facebookvalue, googlevalue, twittervalue, instagramvalue);
+                                               boolean insert = mydb.editProfileInfo(String.valueOf(id), namevalue, designationvalue, descriptionvalue, facebookvalue, googlevalue, twittervalue, instagramvalue,websitesvalue);
                                                if (insert == true) {
                                                    //LinearLayout layout = (LinearLayout) findViewById(R.id.home);
                                                    //Toast.makeText(ProfileActivity.this, "Data Inserted Successfully", Toast.LENGTH_LONG).show();
