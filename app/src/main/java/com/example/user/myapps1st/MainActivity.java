@@ -236,6 +236,11 @@ public class MainActivity extends AppCompatActivity
             startActivity(Intent.createChooser(intent, "Share app via"));
         }
 
+        if(id == R.id.about){
+            Intent intent = new Intent(MainActivity.this, About.class);
+            startActivity(intent);
+        }
+
 
         if (id == R.id.signOut) {
             signOut();

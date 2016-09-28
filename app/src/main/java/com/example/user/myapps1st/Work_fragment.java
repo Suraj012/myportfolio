@@ -73,23 +73,22 @@ public class Work_fragment extends Fragment {
             tabLayout.setVisibility(View.VISIBLE);
             error.setVisibility(View.GONE);
             add.setVisibility(View.GONE);
-        }
-        for (int i = 0; i < list.size(); i++) {
-            final CategoryInfo info = list.get(i);
-            viewPagerAdapter.addFragment(new Android_fragment(), info.category);
+            for (int i = 0; i < list.size(); i++) {
+                final CategoryInfo info = list.get(i);
+                viewPagerAdapter.addFragment(new Android_fragment(), info.category);
+            }
+            viewPager.setAdapter(viewPagerAdapter);
+            tabLayout.setupWithViewPager(viewPager);
         }
 
 //        viewPagerAdapter.addFragment(new Android_fragment(),"ANDROID");
 //        viewPagerAdapter.addFragment(new Java_fragment(),"JAVA");
 //        viewPagerAdapter.addFragment(new Php_fragment(),"PHP");
-
-        viewPager.setAdapter(viewPagerAdapter);
-        tabLayout.setupWithViewPager(viewPager);
     }
 
     @Override
     public void onResume() {
-        Log.e("Onresume", "Resume");
+        Log.e("Onresume", "WorkResume");
         super.onResume();
         Category();
     }

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.user.myapps1st.About"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="160dp"
+        android:src="@drawable/portfolio"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="MyPortfolio"
+        android:gravity="center"
+        android:textSize="22dp"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Version: 1.0.0"
+        android:gravity="center"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:text="Designed and Developed by Suraj Bhandari currently working on Worldlink Communication. Personal Contact Details:- Websites: surajbhandari.com.np, Email: bhandarisuraj81@gmail.com. Contact: 9849754686"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit ="marquee_forever"
+        android:focusable="true"
+        android:textColor="@color/orangePrimary"
+        android:focusableInTouchMode="true"
+        android:scrollHorizontally="true"
+        android:layout_width="wrap_content"
+        android:gravity="bottom"
+        android:textSize="16dp"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>
