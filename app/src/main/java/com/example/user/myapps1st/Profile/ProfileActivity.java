@@ -8,7 +8,6 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.user.myapps1st.Database.DatabaseHelper;
 import com.example.user.myapps1st.Model.ProfileInfo;
@@ -70,7 +69,7 @@ public class ProfileActivity extends AppCompatActivity{
             websites.setText(info.websites);
         }
 
-        AddData();
+       // AddData();
         cancel.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -82,61 +81,61 @@ public class ProfileActivity extends AppCompatActivity{
 
     }
 
-    public void AddData() {
-
-        add.setOnClickListener(new View.OnClickListener() {
-
-                                   @Override
-                                   public void onClick(View v) {
-                                       // TODO Auto-generated method stub
-                                       String namevalue = name.getText().toString();
-                                       String designationvalue = designation.getText().toString();
-                                       String facebookvalue = facebook.getText().toString();
-                                       String googlevalue = google.getText().toString();
-                                       String twittervalue = twitter.getText().toString();
-                                       String instagramvalue = instagram.getText().toString();
-                                       String descriptionvalue = description.getText().toString();
-                                       String websitesvalue = websites.getText().toString();
-                                       if (namevalue.isEmpty() || designationvalue.isEmpty() || facebookvalue.isEmpty() || googlevalue.isEmpty() || twittervalue.isEmpty() || instagramvalue.isEmpty() || descriptionvalue.isEmpty()) {
-                                           nameLayout.setError("Enter name");
-                                           designationLayout.setError("Enter designation");
-                                           descriptionLayout.setError("Enter description");
-                                           facebookLayout.setError("Enter facebook url");
-                                           googleLayout.setError("Enter google url");
-                                           twitterLayout.setError("Enter twitter url");
-                                           instagramLayout.setError("Enter instagram url");
-                                       } else {
-                                           if (id == 0) {
-                                               boolean insert = mydb.insertProfileInfo(namevalue, designationvalue, descriptionvalue, facebookvalue, googlevalue, twittervalue, instagramvalue,websitesvalue);
-                                               if (insert == true) {
-                                                  // Toast.makeText(ProfileActivity.this, "Data Inserted Successfully", Toast.LENGTH_LONG).show();
-                                                   finish();
-//                                                   Home_fragment1 fragment = (Home_fragment1) getFragmentManager().findFragmentById(R.id.home);
-//                                                   fragment.populateUserList();
-                                               } else
-                                                   Toast.makeText(ProfileActivity.this, "Something went wrong...!", Toast.LENGTH_LONG).show();
-                                           } else {
-                                               boolean insert = mydb.editProfileInfo(String.valueOf(id), namevalue, designationvalue, descriptionvalue, facebookvalue, googlevalue, twittervalue, instagramvalue,websitesvalue);
-                                               if (insert == true) {
-                                                   //LinearLayout layout = (LinearLayout) findViewById(R.id.home);
-                                                   //Toast.makeText(ProfileActivity.this, "Data Inserted Successfully", Toast.LENGTH_LONG).show();
-//                                                   Snackbar snackbar = Snackbar.make(layout, "Succefull", Snackbar.LENGTH_LONG);
-//                                                   View snackBarView = snackbar.getView();
-//                                                   snackBarView.setBackgroundColor(getResources().getColor(R.color.green_complete));
-//                                                   TextView textView = (TextView) snackBarView.findViewById(android.support.design.R.id.snackbar_text);
-//                                                   textView.setTextColor(getResources().getColor(R.color.white));
-//                                                   textView.setTextSize(15);
-//                                                   snackbar.show();
-                                                   finish();
-                                               } else
-                                                   Toast.makeText(ProfileActivity.this, "Something went wrong...!", Toast.LENGTH_LONG).show();
-                                           }
-
-                                       }
-                                   }
-                               }
-
-        );
-    }
+//    public void AddData() {
+//
+//        add.setOnClickListener(new View.OnClickListener() {
+//
+//                                   @Override
+//                                   public void onClick(View v) {
+//                                       // TODO Auto-generated method stub
+//                                       String namevalue = name.getText().toString();
+//                                       String designationvalue = designation.getText().toString();
+//                                       String facebookvalue = facebook.getText().toString();
+//                                       String googlevalue = google.getText().toString();
+//                                       String twittervalue = twitter.getText().toString();
+//                                       String instagramvalue = instagram.getText().toString();
+//                                       String descriptionvalue = description.getText().toString();
+//                                       String websitesvalue = websites.getText().toString();
+//                                       if (namevalue.isEmpty() || designationvalue.isEmpty() || facebookvalue.isEmpty() || googlevalue.isEmpty() || twittervalue.isEmpty() || instagramvalue.isEmpty() || descriptionvalue.isEmpty()) {
+//                                           nameLayout.setError("Enter name");
+//                                           designationLayout.setError("Enter designation");
+//                                           descriptionLayout.setError("Enter description");
+//                                           facebookLayout.setError("Enter facebook url");
+//                                           googleLayout.setError("Enter google url");
+//                                           twitterLayout.setError("Enter twitter url");
+//                                           instagramLayout.setError("Enter instagram url");
+//                                       } else {
+//                                           if (id == 0) {
+//                                               boolean insert = mydb.insertProfileInfo(namevalue, designationvalue, descriptionvalue, facebookvalue, googlevalue, twittervalue, instagramvalue,websitesvalue);
+//                                               if (insert == true) {
+//                                                  // Toast.makeText(ProfileActivity.this, "Data Inserted Successfully", Toast.LENGTH_LONG).show();
+//                                                   finish();
+////                                                   Home_fragment1 fragment = (Home_fragment1) getFragmentManager().findFragmentById(R.id.home);
+////                                                   fragment.populateUserList();
+//                                               } else
+//                                                   Toast.makeText(ProfileActivity.this, "Something went wrong...!", Toast.LENGTH_LONG).show();
+//                                           } else {
+//                                               boolean insert = mydb.editProfileInfo(String.valueOf(id), namevalue, designationvalue, descriptionvalue, facebookvalue, googlevalue, twittervalue, instagramvalue,websitesvalue);
+//                                               if (insert == true) {
+//                                                   //LinearLayout layout = (LinearLayout) findViewById(R.id.home);
+//                                                   //Toast.makeText(ProfileActivity.this, "Data Inserted Successfully", Toast.LENGTH_LONG).show();
+////                                                   Snackbar snackbar = Snackbar.make(layout, "Succefull", Snackbar.LENGTH_LONG);
+////                                                   View snackBarView = snackbar.getView();
+////                                                   snackBarView.setBackgroundColor(getResources().getColor(R.color.green_complete));
+////                                                   TextView textView = (TextView) snackBarView.findViewById(android.support.design.R.id.snackbar_text);
+////                                                   textView.setTextColor(getResources().getColor(R.color.white));
+////                                                   textView.setTextSize(15);
+////                                                   snackbar.show();
+//                                                   finish();
+//                                               } else
+//                                                   Toast.makeText(ProfileActivity.this, "Something went wrong...!", Toast.LENGTH_LONG).show();
+//                                           }
+//
+//                                       }
+//                                   }
+//                               }
+//
+//        );
+//    }
 
 }

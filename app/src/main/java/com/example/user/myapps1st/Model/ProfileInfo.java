@@ -10,4 +10,5 @@ public class ProfileInfo {
 	public String twitter;
 	public String instagram;
 	public String websites;
+	public byte[] image;
 }
