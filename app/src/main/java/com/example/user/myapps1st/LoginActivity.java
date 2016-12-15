@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 //        AppEventsLogger.activateApp(this);
         callbackManager = CallbackManager.Factory.create();
 
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_login1);
         loginG = (SignInButton) findViewById(R.id.Glogin);
         loginF = (LoginButton) findViewById(R.id.Flogin);
         email = (EditText) findViewById(R.id.email);

@@ -3,6 +3,7 @@ package com.example.user.myapps1st;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentTransaction;
@@ -91,7 +92,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 getSupportFragmentManager().beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).replace(R.id.frame, new About_fragment(), "about").commit();
-
+                getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorAccent)));
                 //getSupportFragmentManager().beginTransaction().replace(R.id.frame, new About_fragment()).addToBackStack(null).commit();
                 toolbar.setBackgroundColor(getResources().getColor(R.color.purplePrimary));
                 toolbar.setTitle("Profile");

@@ -35,11 +35,13 @@ public class Android_fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        Log.e("Work", "Work");
         mydb = new DatabaseHelper(getContext());
         View view = inflater.inflate(R.layout.fragment_android, container, false);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recycler);
+
         fab = view.findViewById(R.id.fab);
         fabc = view.findViewById(R.id.fabc);
-        recyclerView = (RecyclerView) view.findViewById(R.id.recycler);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +61,7 @@ public class Android_fragment extends Fragment {
         JavaAdapter adapter = new JavaAdapter(getActivity(), mydb.selectWorkInfo());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        Log.e("Clicked1", "Clicked");
+        Log.e("Clicked1", "android");
         recyclerView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,12 +75,10 @@ public class Android_fragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        recyclerView.removeAllViews();
         recyclerView.setHasFixedSize(true);
         JavaAdapter adapter = new JavaAdapter(getActivity(), mydb.selectWorkInfo());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        Log.e("Clicked1", "Clicked");
         recyclerView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

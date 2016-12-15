@@ -1,6 +1,7 @@
 package com.example.user.myapps1st;
 
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.user.myapps1st.Contact.ContactActivity;
 import com.example.user.myapps1st.Database.DatabaseHelper;
@@ -111,28 +113,32 @@ public class Contact_fragment extends Fragment {
                 secondaryEmail.setText(info.secondary_email);
 
 
-                //for instant run. important!!
-                mapView.onResume();
-                // Needs to call MapsInitializer before doing any CameraUpdateFactory calls
-                MapsInitializer.initialize(getActivity().getApplicationContext());
-                final LatLng address = new LatLng(info.latitude, info.longitude);
-                googleMap = mapView.getMap();
-                googleMap.clear();
-                googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-                googleMap.getUiSettings().setMyLocationButtonEnabled(true);
-                googleMap.getUiSettings().setZoomGesturesEnabled(true);
-                // create marker
-                MarkerOptions marker = new MarkerOptions().position(address).title(info.address);
-                // Changing marker icon
-                marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE));
-                // adding marker
-                googleMap.addMarker(marker);
-                googleMap.setMyLocationEnabled(true);
-                // Updates the location and zoom of the MapView
-                CameraPosition cameraPosition = new CameraPosition.Builder()
-                        .target(new LatLng(info.latitude, info.longitude)).zoom(12).build();
-                googleMap.animateCamera(CameraUpdateFactory
-                        .newCameraPosition(cameraPosition));
+                boolean result = Permission.Utility.checkPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION, 0, "Access Fine Location permission is necessary");
+                if (result) {
+
+                    //for instant run. important!!
+                    mapView.onResume();
+                    // Needs to call MapsInitializer before doing any CameraUpdateFactory calls
+                    MapsInitializer.initialize(getActivity().getApplicationContext());
+                    final LatLng address = new LatLng(info.latitude, info.longitude);
+                    googleMap = mapView.getMap();
+                    googleMap.clear();
+                    googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                    googleMap.getUiSettings().setMyLocationButtonEnabled(true);
+                    googleMap.getUiSettings().setZoomGesturesEnabled(true);
+                    // create marker
+                    MarkerOptions marker = new MarkerOptions().position(address).title(info.address);
+                    // Changing marker icon
+                    marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE));
+                    // adding marker
+                    googleMap.addMarker(marker);
+                    googleMap.setMyLocationEnabled(true);
+                    // Updates the location and zoom of the MapView
+                    CameraPosition cameraPosition = new CameraPosition.Builder()
+                            .target(new LatLng(info.latitude, info.longitude)).zoom(12).build();
+                    googleMap.animateCamera(CameraUpdateFactory
+                            .newCameraPosition(cameraPosition));
+                }
             }
 
         } else {
@@ -149,4 +155,15 @@ public class Contact_fragment extends Fragment {
         populateContactInfo();
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode,String[] permissions,int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode == 0){
+            Toast.makeText(getActivity(),"Granted", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(getActivity(),"Not Granted", Toast.LENGTH_SHORT).show();
+
+        }
+
+    }
 }

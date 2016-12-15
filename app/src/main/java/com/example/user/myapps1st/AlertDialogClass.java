@@ -1,8 +1,13 @@
 package com.example.user.myapps1st;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 
 import com.nispok.snackbar.SnackbarManager;
 import com.nispok.snackbar.enums.SnackbarType;
@@ -31,4 +36,44 @@ public class AlertDialogClass {
                         })
         );
     }
+
+    public static void displayDialog(final Context context, String title, String msg, String positiveText, String negativeText, final String subject) {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.MyAlertDialogStyle)
+                .setCancelable(false)
+                .setTitle(title)
+                .setMessage(msg);
+        if (positiveText != null) {
+            builder.setCancelable(false);
+            builder.setPositiveButton(positiveText,
+                    new DialogInterface.OnClickListener() {
+
+                        public void onClick(DialogInterface dialog, int which) {
+                            if (subject != null && subject.equalsIgnoreCase("logout")) {
+                                SharedPreferences sharedPreferences = (context).getSharedPreferences("LoginPreferences", context.MODE_PRIVATE);
+                                sharedPreferences.edit().clear().commit();
+                                Intent intent = new Intent(context, LoginActivity1.class);
+                                context.startActivity(intent);
+                                ((Activity) context).overridePendingTransition(R.anim.abc_slide_in_bottom, R.anim.abc_slide_out_top);
+                                LoginActivity1.password.setText("");
+                                LoginActivity1.email.setText("");
+                                //  } else if ("") {
+                            }
+                        }
+                    });
+        } else {
+            builder.setCancelable(true);
+        }
+        if (negativeText != null) {
+
+            builder.setNegativeButton(negativeText, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    if (subject != null) {
+                        builder.setCancelable(true);
+                    }
+                }
+            });
+        }
+        builder.create().show();
+    }
+
 }

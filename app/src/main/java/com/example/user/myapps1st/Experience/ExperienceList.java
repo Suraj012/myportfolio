@@ -3,6 +3,7 @@ package com.example.user.myapps1st.Experience;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -35,8 +36,14 @@ public class ExperienceList extends AppCompatActivity implements SwipeRefreshLay
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_experience_list);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(Color.parseColor("#512da8"));
+        }
+
         getSupportActionBar().setTitle("Experience Lists");
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#673ab7")));
+        //getSupportActionBar().setSplitBackgroundDrawable(new ColorDrawable(Color.parseColor("#c2185b")));
+        //getSupportActionBar().setStackedBackgroundDrawable(new ColorDrawable(Color.parseColor("#ff8a80")));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         errorE = (TextView) findViewById(R.id.errorE);
         mydb = new DatabaseHelper(this);

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/gradient"
+    tools:context=".LoginActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/portfolio"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="26dp"
+            android:layout_marginTop="8dp"
+            android:text="Welcome to MyPortfolio"/>
+
+        <android.support.v7.widget.AppCompatEditText
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/rounded_edittext"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center_vertical"
+            android:hint="Username / Email"
+            android:singleLine="true"
+            android:id="@+id/email"
+            android:textSize="14sp"
+            android:drawablePadding="10dp"
+            android:textColorHint="@android:color/white"
+            android:textColor="@android:color/white"
+            android:drawableLeft="@mipmap/ic_action_action_account_box"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            >
+            <android.support.v7.widget.AppCompatEditText
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@drawable/rounded_edittext"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center_vertical"
+                android:hint="Password"
+                android:singleLine="true"
+                android:id="@+id/password"
+                android:inputType="textPassword"
+                android:textSize="14sp"
+                android:drawablePadding="10dp"
+                android:textColorHint="@android:color/white"
+                android:textColor="@android:color/white"
+                android:drawableLeft="@mipmap/ic_action_communication_vpn_key"/>
+
+            <ImageButton
+                android:id="@+id/showPass"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/ic_visibility"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                />
+            <ImageButton
+                android:id="@+id/hidePass"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/ic_visibility_off"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:visibility="gone"
+                />
+        </RelativeLayout>
+        <mehdi.sakout.fancybuttons.FancyButton
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="16dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:paddingTop="10dp"
+        fancy:fb_borderColor="#8BC34A"
+        fancy:fb_borderWidth="1dp"
+        fancy:fb_defaultColor="#7CB342"
+        fancy:fb_focusColor="#689F38"
+        fancy:fb_radius="30dp"
+        fancy:fb_text="Login"
+        fancy:fb_textColor="#FFFFFF" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="18dp"
+            android:textColor="#fff"
+            android:text="Dont have any account?"/>
+
+        <com.rey.material.widget.Button
+            android:id="@+id/register"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:text="Register Now !"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/colorAccent"
+            android:gravity="center"
+            android:textSize="18dp"
+            app:rd_enable="true" />
+
+    </LinearLayout>
+
+
+</ScrollView>

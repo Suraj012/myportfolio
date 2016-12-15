@@ -42,6 +42,11 @@ public class DialogWorkActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_work_form);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(Color.parseColor("#1976d2"));
+        }
+
         getSupportActionBar().setTitle("Add Portfolio");
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#2196f3")));
         add = (Button) findViewById(R.id.add);

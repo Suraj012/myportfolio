@@ -8,6 +8,9 @@ public class Constants {
     public static final int SPLASH_DELAY = 5000;
     public static final String EMPTY = "";
 
+    public static final String addUser = "http://surajbhandari.com.np/myportfolio/index.php/User/users_add";
+    public static final String loginAuthenticate = "http://surajbhandari.com.np/myportfolio/index.php/User/authentication";
+
     //fonts
     public static final String STREATWEAR_FONT = "fonts/streatwear.otf";
     public static final String DITI_SWEET_FONT = "fonts/diti_sweet.ttf";

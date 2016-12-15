@@ -150,7 +150,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //Insert
-    public boolean insertProfileInfo(String name, String designation, String description, String facebook, String google, String twitter, String instagram, String websites, byte[] image){
+    public boolean insertProfileInfo(String name, String designation, String description, String facebook, String google, String twitter, String instagram, String websites){
         ContentValues cv = new ContentValues();
         cv.put("name", name);
         cv.put("designation", designation);
@@ -160,7 +160,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cv.put("twitter", twitter);
         cv.put("instagram", instagram);
         cv.put("websites", websites);
-        cv.put("image", String.valueOf(image));
+        //cv.put("image", String.valueOf(image));
         long result = getWritableDatabase().insert("tbl_profile", "", cv);
         if(result == -1)
             return false;

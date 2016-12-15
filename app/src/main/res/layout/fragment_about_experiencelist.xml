@@ -130,7 +130,7 @@
                 android:layout_marginTop="0dp"
                 android:maxLines="3"
                 android:text="Android Developer klaldfja lkjasd flk kljasd lj adfl lkhadf l asdjlf ljalsddf ljlad ljasdf lajdsdlflkjadf ljadslf..."
-                android:textSize="18dp" />
+                android:textSize="16dp" />
 
         </LinearLayout>
     </android.support.v7.widget.CardView>

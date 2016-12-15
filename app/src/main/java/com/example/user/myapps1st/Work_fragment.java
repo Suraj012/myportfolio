@@ -31,7 +31,7 @@ public class Work_fragment extends Fragment {
     ViewPager viewPager;
     ViewPagerAdapter viewPagerAdapter;
     DatabaseHelper mydb;
-
+    View view;
 
     public Work_fragment() {
         // Required empty public constructor
@@ -42,13 +42,9 @@ public class Work_fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_work, container, false);
+        view = inflater.inflate(R.layout.fragment_work, container, false);
         error = (TextView) view.findViewById(R.id.error);
         add = (Button) view.findViewById(R.id.add);
-        tabLayout = (TabLayout) view.findViewById(R.id.tab);
-        viewPager = (ViewPager) view.findViewById(R.id.viewpager);
-        mydb = new DatabaseHelper(getActivity());
-        viewPagerAdapter = new ViewPagerAdapter(getFragmentManager());
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,11 +53,14 @@ public class Work_fragment extends Fragment {
                 startActivity(intent);
             }
         });
-        //Category();
         return view;
     }
 
     public void Category() {
+        tabLayout = (TabLayout) view.findViewById(R.id.tab);
+        viewPager = (ViewPager) view.findViewById(R.id.viewpager);
+        mydb = new DatabaseHelper(getActivity());
+        viewPagerAdapter = new ViewPagerAdapter(getFragmentManager());
         int count = mydb.selectCategoryInfo().size();
         Log.e("Count", String.valueOf(count));
         ArrayList<CategoryInfo> list = mydb.selectCategoryInfo();
@@ -75,6 +74,7 @@ public class Work_fragment extends Fragment {
             add.setVisibility(View.GONE);
             for (int i = 0; i < list.size(); i++) {
                 final CategoryInfo info = list.get(i);
+                Log.e("ABC","abc");
                 viewPagerAdapter.addFragment(new Android_fragment(), info.category);
             }
             viewPager.setAdapter(viewPagerAdapter);
@@ -84,6 +84,7 @@ public class Work_fragment extends Fragment {
 //        viewPagerAdapter.addFragment(new Android_fragment(),"ANDROID");
 //        viewPagerAdapter.addFragment(new Java_fragment(),"JAVA");
 //        viewPagerAdapter.addFragment(new Php_fragment(),"PHP");
+//        viewPager.setAdapter(viewPagerAdapter);
     }
 
     @Override
@@ -96,6 +97,6 @@ public class Work_fragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        Log.e("OnPause", "Pause");
+        Log.e("OnPause", "WorkPause");
     }
 }

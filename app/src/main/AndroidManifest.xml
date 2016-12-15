@@ -5,12 +5,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
     <uses-feature
         android:glEsVersion="0x00020000"
         android:required="true" />
 
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <uses-library android:name="com.google.android.maps" />
@@ -22,7 +22,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity1"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,27 +31,26 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".SplashScreen"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".WebActivity"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity1" />
         <activity
             android:name=".Profile.ProfileActivity"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity1" />
         <activity
-            android:name=".SplashScreen"
+            android:name=".MainActivity1"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Register"
-            android:parentActivityName=".LoginActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:parentActivityName=".LoginActivity1" />
         <activity
             android:name=".Skill.SkillList"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity1" />
         <activity
             android:name=".Experience.ExperienceList"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity1" />
         <activity
             android:name=".Skill.DialogSkillActivity"
             android:parentActivityName=".Skill.SkillList" />
@@ -60,23 +59,23 @@
             android:parentActivityName=".Experience.ExperienceList" />
         <activity
             android:name=".Contact.ContactActivity"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity1" />
         <activity
             android:name=".Portfolio.CategoryList"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity1" />
         <activity
             android:name=".Portfolio.CategoryAddActivity"
             android:parentActivityName=".Portfolio.CategoryList" />
         <activity
             android:name=".Experience.ExperienceDetail"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".MainActivity1"
             android:theme="@style/CollapsingTheme" />
         <activity
             android:name=".Portfolio.DialogWorkActivity"
             android:parentActivityName=".Portfolio.CategoryList" />
         <activity
             android:name=".Portfolio.WorkList"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity1" />
         <activity
             android:name=".Portfolio.PortfolioList"
             android:parentActivityName=".Portfolio.CategoryList" />
@@ -97,7 +96,7 @@
 
         <activity
             android:name=".About"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity1"></activity>
     </application>
 
 </manifest>

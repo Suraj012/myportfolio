@@ -1,9 +1,14 @@
 package com.example.user.myapps1st.Experience;
 
+import android.annotation.TargetApi;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.user.myapps1st.Database.DatabaseHelper;
@@ -14,16 +19,17 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class ExperienceDetail extends AppCompatActivity {
+public class ExperienceDetail extends AppCompatActivity implements View.OnClickListener {
     TextView time, title, company, dateFrom, dateTo, detail;
     int position;
     DatabaseHelper mydb;
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_experience_detail);
-        position = getIntent().getIntExtra("position",0);
+        position = getIntent().getIntExtra("position", 0);
         title = (TextView) findViewById(R.id.title);
         company = (TextView) findViewById(R.id.company);
         dateFrom = (TextView) findViewById(R.id.dateFrom);
@@ -32,7 +38,7 @@ public class ExperienceDetail extends AppCompatActivity {
         mydb = new DatabaseHelper(this);
 
         ExperienceInfo info = mydb.getExperienceInfo(position + "");
-        if(position!=0){
+        if (position != 0) {
             title.setText(info.title);
             company.setText(info.company);
             dateFrom.setText(info.dateFrom);
@@ -43,15 +49,24 @@ public class ExperienceDetail extends AppCompatActivity {
 
         final Toolbar toolbar = (Toolbar) findViewById(R.id.MyToolbar);
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(Color.parseColor("#512da8"));
+        }
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(this);
+
+
         //Collapsing Toolbar..
         CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapse_toolbar);
         collapsingToolbarLayout.setTitle(info.title);
-       // collapsingToolbarLayout.setCollapsedTitleTextColor(new ColorDrawable(Color.parseColor("#ffffff")));
-         //collapsingToolbarLayout.setExpandedTitleColor(0xff00ff00);
+        // collapsingToolbarLayout.setCollapsedTitleTextColor(new ColorDrawable(Color.parseColor("#ffffff")));
+        //collapsingToolbarLayout.setExpandedTitleColor(0xff00ff00);
         collapsingToolbarLayout.setExpandedTitleTextAppearance(R.style.ExpandedAppBar);
 //        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#673ab7")));
         collapsingToolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.cardview_light_background));
-        collapsingToolbarLayout.setContentScrimColor(getResources().getColor(R.color.colorPrimary));
+        collapsingToolbarLayout.setContentScrimColor(getResources().getColor(R.color.purplePrimary));
 
 
         //Date
@@ -62,7 +77,7 @@ public class ExperienceDetail extends AppCompatActivity {
         //
     }
 
-        //Date start
+    //Date start
     public void doWork() {
         runOnUiThread(new Runnable() {
             public void run() {
@@ -88,6 +103,11 @@ public class ExperienceDetail extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onClick(View view) {
+        super.onBackPressed();
     }
 
     class CountDownRunner implements Runnable {
