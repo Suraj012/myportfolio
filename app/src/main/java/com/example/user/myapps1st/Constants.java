@@ -9,7 +9,30 @@ public class Constants {
     public static final String EMPTY = "";
 
     public static final String addUser = "http://surajbhandari.com.np/myportfolio/index.php/User/users_add";
+    public static final String addProfile = "http://surajbhandari.com.np/myportfolio/index.php/Profile/profile_add";
+    public static final String addEducation = "http://surajbhandari.com.np/myportfolio/index.php/Profile/education_add";
+    public static final String addExperience = "http://surajbhandari.com.np/myportfolio/index.php/Profile/experience_add";
+    public static final String addSkill = "http://surajbhandari.com.np/myportfolio/index.php/Profile/skill_add";
+    public static final String addContact = "http://surajbhandari.com.np/myportfolio/index.php/Profile/contact_add";
+    public static final String addCategory = "http://surajbhandari.com.np/myportfolio/index.php/Profile/category_add";
+
+    public static final String getCategory = "http://surajbhandari.com.np/myportfolio/index.php/Profile/category_get";
+    public static final String getSkill = "http://surajbhandari.com.np/myportfolio/index.php/Profile/skill_get";
+    public static final String getExperience= "http://surajbhandari.com.np/myportfolio/index.php/Profile/experience_get";
+    public static final String getEducation= "http://surajbhandari.com.np/myportfolio/index.php/Profile/education_get";
+    public static final String getProfile = "http://surajbhandari.com.np/myportfolio/index.php/Profile/profile_get";
+    public static final String getContact = "http://surajbhandari.com.np/myportfolio/index.php/Profile/contact_get";
     public static final String loginAuthenticate = "http://surajbhandari.com.np/myportfolio/index.php/User/authentication";
+
+    public static final String editCategroy = "http://surajbhandari.com.np/myportfolio/index.php/Profile/category_edit";
+    public static final String editEducation = "http://surajbhandari.com.np/myportfolio/index.php/Profile/education_edit";
+    public static final String editExperience = "http://surajbhandari.com.np/myportfolio/index.php/Profile/experience_edit";
+    public static final String editSkill = "http://surajbhandari.com.np/myportfolio/index.php/Profile/skill_edit";
+
+    public static final String deleteCategory = "http://surajbhandari.com.np/myportfolio/index.php/Profile/category_delete";
+    public static final String deleteSkill = "http://surajbhandari.com.np/myportfolio/index.php/Profile/skill_delete";
+    public static final String deleteEducation = "http://surajbhandari.com.np/myportfolio/index.php/Profile/education_delete";
+    public static final String deleteExperience = "http://surajbhandari.com.np/myportfolio/index.php/Profile/experience_delete";
 
     //fonts
     public static final String STREATWEAR_FONT = "fonts/streatwear.otf";

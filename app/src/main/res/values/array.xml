@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <array name="progress_colors">
+        <item>@color/materialgreen</item>
+        <item>@color/materialorange</item>
+        <item>@color/colorAccent</item>
+    </array>
     <array name="linear_progress_colors">
         <item>@color/materialorange</item>
         <item>@color/materialred</item>

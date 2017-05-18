@@ -13,6 +13,7 @@ import android.database.sqlite.SQLiteStatement;
 
 import com.example.user.myapps1st.Model.CategoryInfo;
 import com.example.user.myapps1st.Model.ContactInfo;
+import com.example.user.myapps1st.Model.EducationInfo;
 import com.example.user.myapps1st.Model.ExperienceInfo;
 import com.example.user.myapps1st.Model.PortfolioInfo;
 import com.example.user.myapps1st.Model.ProfileInfo;
@@ -56,6 +57,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             +" `dateFrom`	TEXT,"
             +" `dateTo`	TEXT,"
             +" `description`	TEXT)";
+
+    String createEducationTable = "CREATE TABLE IF NOT EXISTS `tbl_education` ("
+            +" `id`	INTEGER PRIMARY KEY AUTOINCREMENT,"
+            +" `degree`	TEXT,"
+            +" `college`	TEXT,"
+            +" `university`	TEXT,"
+            +" `marks`	TEXT,"
+            +" `startDate`	TEXT,"
+            +" `endDate`	TEXT)";
 
     String createSkillTable = "CREATE TABLE IF NOT EXISTS `tbl_skill` ("
             +" `id`	INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -101,6 +111,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         getWritableDatabase().execSQL(createUserTable);
         getWritableDatabase().execSQL(createProfileTable);
         getWritableDatabase().execSQL(createExperienceTable);
+        getWritableDatabase().execSQL(createEducationTable);
         getWritableDatabase().execSQL(createSkillTable);
         getWritableDatabase().execSQL(createPortfolioTable);
         getWritableDatabase().execSQL(createContactTable);
@@ -373,6 +384,85 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //Delete
     public void deleteExperienceInfo(String id){
         getWritableDatabase().delete("tbl_experience", "id="+id, null);
+    }
+
+    //Education database
+
+    //Insert
+    public boolean insertEducationInfo(String degree, String college, String university, String marks, String startDate, String endDate){
+        ContentValues cv = new ContentValues();
+        cv.put("degree", degree);
+        cv.put("college", college);
+        cv.put("university", university);
+        cv.put("marks", marks);
+        cv.put("startDate", startDate);
+        cv.put("endDate", endDate);
+        long result = getWritableDatabase().insert("tbl_education", "", cv);
+        if(result == -1)
+            return false;
+        else
+            return true;
+    }
+
+    //Select
+    public ArrayList<EducationInfo> selectEducationInfo(){
+        ArrayList<EducationInfo>list = new ArrayList<EducationInfo>();
+        String select = "SELECT * FROM tbl_education";
+
+        Cursor cursor = getWritableDatabase().rawQuery(select, null);
+        while (cursor.moveToNext()){
+            EducationInfo info = new EducationInfo();
+            info.id = cursor.getString(cursor.getColumnIndex("id"));
+            info.degree = cursor.getString(cursor.getColumnIndex("degree"));
+            info.college = cursor.getString(cursor.getColumnIndex("college"));
+            info.university = cursor.getString(cursor.getColumnIndex("university"));
+            info.marks = cursor.getString(cursor.getColumnIndex("marks"));
+            info.startDate = cursor.getString(cursor.getColumnIndex("startDate"));
+            info.endDate = cursor.getString(cursor.getColumnIndex("endDate"));
+            list.add(info);
+        }
+        cursor.close();
+        return list;
+    }
+
+    public EducationInfo getEducationInfo(String id){
+
+        String select = "SELECT * FROM tbl_education where id="+id ;
+        Cursor cursor = getWritableDatabase().rawQuery(select, null);
+        EducationInfo info = new EducationInfo();
+        while (cursor.moveToNext()){
+            info.id = cursor.getString(cursor.getColumnIndex("id"));
+            info.degree = cursor.getString(cursor.getColumnIndex("degree"));
+            info.college = cursor.getString(cursor.getColumnIndex("college"));
+            info.university = cursor.getString(cursor.getColumnIndex("university"));
+            info.marks = cursor.getString(cursor.getColumnIndex("marks"));
+            info.startDate = cursor.getString(cursor.getColumnIndex("startDate"));
+            info.endDate = cursor.getString(cursor.getColumnIndex("endDate"));
+        }
+        cursor.close();
+        return info;
+    }
+
+    //Update
+    public boolean editEducationInfo(String id, String degree, String college, String university, String marks, String startDate, String endDate){
+        ContentValues cv = new ContentValues();
+        cv.put("id", id);
+        cv.put("degree", degree);
+        cv.put("college", college);
+        cv.put("university", university);
+        cv.put("marks", marks);
+        cv.put("startDate", startDate);
+        cv.put("endDate", endDate);
+        long result = getWritableDatabase().update("tbl_education",cv,"id="+id,null);
+        if(result == -1)
+            return false;
+        else
+            return true;
+    }
+
+    //Delete
+    public void deleteEducationInfo(String id){
+        getWritableDatabase().delete("tbl_education", "id="+id, null);
     }
 
     //Category database

@@ -1,4 +1,5 @@
-<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/refresh"
@@ -11,6 +12,7 @@
         tools:context="com.example.user.myapps1st.Home_fragment">
 
         <LinearLayout
+            android:id="@+id/layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -21,6 +23,95 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:paddingLeft="16dp">
+
+                <com.rey.material.widget.ProgressView
+                    android:id="@+id/progressviewEdu"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:visibility="gone"
+                    app:pv_autostart="true"
+                    app:pv_circular="true"
+                    app:pv_progressMode="indeterminate"
+                    app:pv_progressStyle="@style/Material.Drawable.CircularProgress.Normal" />
+
+
+                <com.rey.material.widget.TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left"
+                    android:text="Education"
+                    android:textColor="@color/purplePrimaryDark"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <com.rey.material.widget.Button
+                    android:id="@+id/addEducation"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Add"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/purplePrimary"
+                    android:textSize="20dp"
+                    android:theme="@style/MyButton"
+                    app:rd_enable="true" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/errorEdu"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="16dp"
+                    android:visibility="gone"
+                    android:text="Sorry ! Not found any Information."
+                    android:textColor="@color/materialred"
+                    android:textSize="18dp" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerEdu"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone" />
+
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_marginTop="8dp"
+                android:layout_height="1dp"
+                android:background="#ccc" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp">
+
+                <com.rey.material.widget.ProgressView
+                    android:id="@+id/progressviewE"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:visibility="gone"
+                    app:pv_autostart="true"
+                    app:pv_circular="true"
+                    app:pv_progressMode="indeterminate"
+                    app:pv_progressStyle="@style/Material.Drawable.CircularProgress.Normal" />
+
 
                 <com.rey.material.widget.TextView
                     android:layout_width="0dp"
@@ -58,6 +149,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="16dp"
+                    android:visibility="gone"
                     android:text="Sorry ! Not found any Information."
                     android:textColor="@color/materialred"
                     android:textSize="18dp" />
@@ -83,6 +175,19 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:paddingLeft="16dp">
+
+                <com.rey.material.widget.ProgressView
+                    android:id="@+id/progressviewS"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:visibility="gone"
+                    app:pv_autostart="true"
+                    app:pv_circular="true"
+                    app:pv_progressMode="indeterminate"
+                    app:pv_progressStyle="@style/Material.Drawable.CircularProgress.Normal" />
 
                 <com.rey.material.widget.TextView
                     android:layout_width="0dp"
@@ -120,6 +225,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="16dp"
+                    android:visibility="gone"
                     android:text="Sorry ! Not found any Information."
                     android:textColor="@color/materialred"
                     android:textSize="18dp" />
@@ -132,6 +238,7 @@
 
 
             </RelativeLayout>
+
         </LinearLayout>
 
     </ScrollView>

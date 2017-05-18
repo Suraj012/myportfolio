@@ -53,6 +53,7 @@ public class Work_fragment extends Fragment {
                 startActivity(intent);
             }
         });
+        Category();
         return view;
     }
 
@@ -75,7 +76,11 @@ public class Work_fragment extends Fragment {
             for (int i = 0; i < list.size(); i++) {
                 final CategoryInfo info = list.get(i);
                 Log.e("ABC","abc");
-                viewPagerAdapter.addFragment(new Android_fragment(), info.category);
+                Bundle b = new Bundle();
+                b.putString("cid", info.id);
+                Android_fragment fragment = new Android_fragment();
+                fragment.setArguments(b);
+                viewPagerAdapter.addFragment(fragment, info.category);
             }
             viewPager.setAdapter(viewPagerAdapter);
             tabLayout.setupWithViewPager(viewPager);
@@ -91,7 +96,7 @@ public class Work_fragment extends Fragment {
     public void onResume() {
         Log.e("Onresume", "WorkResume");
         super.onResume();
-        Category();
+    //    Category();
     }
 
     @Override

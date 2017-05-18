@@ -65,7 +65,7 @@ public class Register extends AppCompatActivity {
 
         phone_state = Permission.Utility.checkPermission(this, Manifest.permission.READ_PHONE_STATE, 101, "Phone state permission is necessary");
         if(phone_state){
-            deviceId = myHelper.getImei();
+            deviceId = myHelper.getImei(Register.this);
             Log.e("devies", deviceId);
         }
 
@@ -206,7 +206,7 @@ public class Register extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if(requestCode==101){
-            deviceId = myHelper.getImei();
+            deviceId = myHelper.getImei(Register.this);
         }
     }
 }

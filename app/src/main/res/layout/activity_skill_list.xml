@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -14,7 +15,8 @@
         android:padding="16dp"
         android:text="Sorry ! Not found any Information."
         android:textColor="@color/colorAccent"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:visibility="gone" />
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/refresh"
@@ -29,6 +31,20 @@
             android:visibility="gone" />
 
     </android.support.v4.widget.SwipeRefreshLayout>
+
+    <com.rey.material.widget.ProgressView
+        android:id="@+id/progressview"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_gravity="top"
+        android:visibility="gone"
+        app:pv_autostart="true"
+        app:pv_circular="false"
+        app:pv_progressStyle="@style/Material.Drawable.LinearProgress.custom"
+        app:pv_progressMode="indeterminate"
+        />
+
+
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.daimajia.swipe.SwipeLayout;
 import com.daimajia.swipe.adapters.RecyclerSwipeAdapter;
+import com.example.user.myapps1st.About_fragment;
 import com.example.user.myapps1st.Model.ExperienceInfo;
 import com.example.user.myapps1st.R;
 
@@ -46,6 +47,7 @@ public class ExperienceAdapter extends RecyclerSwipeAdapter<ExperienceAdapter.Si
     }
 
     private Context mContext;
+    private About_fragment fragment;
     AlertDialog.Builder builder;
     View view;
 
@@ -67,24 +69,24 @@ public class ExperienceAdapter extends RecyclerSwipeAdapter<ExperienceAdapter.Si
 
         ExperienceInfo info = data.get(position);
         id = Integer.parseInt(info.id);
-        viewHolder.title.setText(info.title);
-        viewHolder.company.setText(info.company);
-        String[] dateFrom = info.dateFrom.split("-");
+        viewHolder.title.setText(info.getTitle());
+        viewHolder.company.setText(info.getCompany());
+        String[] dateFrom = info.getDateFrom().split("-");
         String yearF = dateFrom[0];
         String monthF = dateFrom[1];
         String dayF = dateFrom[2];
         viewHolder.dateFrom.setText(yearF);
 
         if(info.dateTo.equalsIgnoreCase("current")) {
-            viewHolder.dateTo.setText(info.dateTo);
+            viewHolder.dateTo.setText(info.getDateTo());
         }else{
-            String[] dateTo = info.dateTo.split("-");
+            String[] dateTo = info.getDateTo().split("-");
             String yearT = dateTo[0];
             String monthT = dateTo[1];
             String dayT = dateTo[2];
             viewHolder.dateTo.setText(yearT);
         }
-        viewHolder.description.setText(info.description);
+        viewHolder.description.setText(info.getDescription());
 
 
         viewHolder.swipeLayout.addSwipeListener(new SwipeLayout.SwipeListener() {

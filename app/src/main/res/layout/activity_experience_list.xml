@@ -4,7 +4,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.user.myapps1st.Skill.SkillList">
+
+    <com.rey.material.widget.ProgressView
+        android:id="@+id/progressview"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_gravity="top"
+        android:visibility="gone"
+        app:pv_autostart="true"
+        app:pv_circular="false"
+        app:pv_progressStyle="@style/Material.Drawable.LinearProgress.custom"
+        app:pv_progressMode="indeterminate"
+        />
 
     <TextView
         android:layout_width="match_parent"
@@ -12,6 +25,7 @@
         android:id="@+id/errorE"
         android:padding="16dp"
         android:gravity="center"
+        android:visibility="gone"
         android:text="Sorry ! Not found any Information."
         android:textSize="18dp"
         android:textColor="@color/materialred"/>

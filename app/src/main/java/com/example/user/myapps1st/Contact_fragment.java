@@ -12,9 +12,15 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.error.AuthFailureError;
+import com.android.volley.error.VolleyError;
+import com.android.volley.request.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.user.myapps1st.Contact.ContactActivity;
 import com.example.user.myapps1st.Database.DatabaseHelper;
-import com.example.user.myapps1st.Model.ContactInfo;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -24,9 +30,15 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.rey.material.widget.Button;
+import com.rey.material.widget.ProgressView;
 import com.rey.material.widget.TextView;
 
-import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -39,6 +51,10 @@ public class Contact_fragment extends Fragment {
     LinearLayout map, info;
     MapView mapView;
     GoogleMap googleMap;
+    private RequestQueue requestQueue;
+    private StringRequest request;
+    ProgressView progress;
+    MyHelper myHelper = new MyHelper(getActivity());
 
 
     public Contact_fragment() {
@@ -65,6 +81,8 @@ public class Contact_fragment extends Fragment {
         map = (LinearLayout) view.findViewById(R.id.map);
         info = (LinearLayout) view.findViewById(R.id.info);
         mapView = (MapView) view.findViewById(R.id.mapView);
+        progress = (ProgressView) view.findViewById(R.id.progressview);
+        progress.setVisibility(View.VISIBLE);
         mapView.onCreate(savedInstanceState);
 
         add.setOnClickListener(new View.OnClickListener() {
@@ -75,84 +93,16 @@ public class Contact_fragment extends Fragment {
             }
         });
 
-        mydb = new DatabaseHelper(getActivity());
-        int count = mydb.selectContactInfo().size();
-        Log.e("count", String.valueOf(count));
-        if (count > 0) {
-            populateContactInfo();
-            map.setVisibility(View.VISIBLE);
-            info.setVisibility(View.VISIBLE);
-            error.setVisibility(View.GONE);
-            add.setVisibility(View.GONE);
-        } else {
-            map.setVisibility(View.GONE);
-            info.setVisibility(View.GONE);
-            error.setVisibility(View.VISIBLE);
-            add.setVisibility(View.VISIBLE);
-        }
+       getContact();
 
         return view;
 
     }
 
-    public void populateContactInfo() {
-        ArrayList<ContactInfo> list = mydb.selectContactInfo();
-        if (mydb.selectContactInfo().size() > 0) {
-            map.setVisibility(View.VISIBLE);
-            info.setVisibility(View.VISIBLE);
-            error.setVisibility(View.GONE);
-            add.setVisibility(View.GONE);
-
-            for (int i = 0; i < list.size(); i++) {
-                final ContactInfo info = list.get(i);
-                address.setText(info.address + ", ");
-                city.setText(info.city + ", ");
-                country.setText(info.country);
-                phone.setText(info.phone);
-                primaryEmail.setText(info.primary_email);
-                secondaryEmail.setText(info.secondary_email);
-
-
-                boolean result = Permission.Utility.checkPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION, 0, "Access Fine Location permission is necessary");
-                if (result) {
-
-                    //for instant run. important!!
-                    mapView.onResume();
-                    // Needs to call MapsInitializer before doing any CameraUpdateFactory calls
-                    MapsInitializer.initialize(getActivity().getApplicationContext());
-                    final LatLng address = new LatLng(info.latitude, info.longitude);
-                    googleMap = mapView.getMap();
-                    googleMap.clear();
-                    googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-                    googleMap.getUiSettings().setMyLocationButtonEnabled(true);
-                    googleMap.getUiSettings().setZoomGesturesEnabled(true);
-                    // create marker
-                    MarkerOptions marker = new MarkerOptions().position(address).title(info.address);
-                    // Changing marker icon
-                    marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE));
-                    // adding marker
-                    googleMap.addMarker(marker);
-                    googleMap.setMyLocationEnabled(true);
-                    // Updates the location and zoom of the MapView
-                    CameraPosition cameraPosition = new CameraPosition.Builder()
-                            .target(new LatLng(info.latitude, info.longitude)).zoom(12).build();
-                    googleMap.animateCamera(CameraUpdateFactory
-                            .newCameraPosition(cameraPosition));
-                }
-            }
-
-        } else {
-            map.setVisibility(View.GONE);
-            info.setVisibility(View.GONE);
-            error.setVisibility(View.VISIBLE);
-            add.setVisibility(View.VISIBLE);
-        }
-    }
-
     @Override
     public void onResume() {
         super.onResume();
-        populateContactInfo();
+        getContact();
     }
 
     @Override
@@ -165,5 +115,107 @@ public class Contact_fragment extends Fragment {
 
         }
 
+    }
+    private void getContact() {
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        StringRequest request = new StringRequest(Request.Method.POST, Constants.getContact, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                progress.setVisibility(View.GONE);
+                Log.e("Response", response);
+                try {
+                    JSONObject object = new JSONObject(response);
+                    String status = object.getString("status");
+                    if (status.equalsIgnoreCase(String.valueOf(0))) {
+                        JSONArray finalArray = object.getJSONArray("data");
+                        for (int i = 0; i < finalArray.length(); i++) {
+                            JSONObject finalObject = finalArray.getJSONObject(i);
+                            String addressValue = finalObject.getString("address");
+                            String cityValue = finalObject.getString("city");
+                            String countryValue = finalObject.getString("country");
+                            Double latitudeValue = Double.valueOf(finalObject.getString("latitude"));
+                            Double longitudeValue = Double.valueOf(finalObject.getString("longitude"));
+                            String phoneValue = finalObject.getString("phone");
+                            String primaryEmailValue = finalObject.getString("primaryEmail");
+                            String secondaryEmailValue = finalObject.getString("secondaryEmail");
+
+                            address.setText(addressValue + ", ");
+                            city.setText(cityValue + ", ");
+                            country.setText(countryValue);
+                            phone.setText(phoneValue);
+                            primaryEmail.setText(primaryEmailValue);
+                            secondaryEmail.setText(secondaryEmailValue);
+
+                            map.setVisibility(View.VISIBLE);
+                            info.setVisibility(View.VISIBLE);
+                            error.setVisibility(View.GONE);
+                            add.setVisibility(View.GONE);
+
+                            boolean result = Permission.Utility.checkPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION, 0, "Access Fine Location permission is necessary");
+                            if (result) {
+
+                                //for instant run. important!!
+                                mapView.onResume();
+                                // Needs to call MapsInitializer before doing any CameraUpdateFactory calls
+                                MapsInitializer.initialize(getActivity().getApplicationContext());
+                                final LatLng address = new LatLng(latitudeValue, longitudeValue);
+                                googleMap = mapView.getMap();
+                                googleMap.clear();
+                                googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                                googleMap.getUiSettings().setMyLocationButtonEnabled(true);
+                                googleMap.getUiSettings().setZoomGesturesEnabled(true);
+                                // create marker
+                                MarkerOptions marker = new MarkerOptions().position(address).title(addressValue);
+                                // Changing marker icon
+                                marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE));
+                                // adding marker
+                                googleMap.addMarker(marker);
+                                googleMap.setMyLocationEnabled(true);
+                                // Updates the location and zoom of the MapView
+                                CameraPosition cameraPosition = new CameraPosition.Builder()
+                                        .target(new LatLng(latitudeValue, longitudeValue)).zoom(12).build();
+                                googleMap.animateCamera(CameraUpdateFactory
+                                        .newCameraPosition(cameraPosition));
+                            }
+                        }
+                    }else{
+                        error.setVisibility(View.VISIBLE);
+                        add.setVisibility(View.VISIBLE);
+                        map.setVisibility(View.GONE);
+                        info.setVisibility(View.GONE);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError errore) {
+                progress.setVisibility(View.GONE);
+                map.setVisibility(View.GONE);
+                info.setVisibility(View.GONE);
+                error.setVisibility(View.VISIBLE);
+                add.setVisibility(View.GONE);
+                if (myHelper.isNetworkAvailable(getActivity())) {
+                    error.setText("Server Error. Try again later.. !");
+                    Toast.makeText(getActivity(), "Server Error..!", Toast.LENGTH_SHORT).show();
+                } else {
+                    error.setText("No Internet Connection.. !");
+                    Toast.makeText(getActivity(), "Something went wrong. Please check your internet and try again.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                String uid = myHelper.getUID(getActivity());
+                String deviceId = myHelper.getImei(getActivity());
+                HashMap<String, String> hashMap = new HashMap<String, String>();
+                hashMap.put("uid", uid);
+                hashMap.put("deviceId", deviceId);
+                return hashMap;
+            }
+        };
+        requestQueue.add(request);
     }
 }

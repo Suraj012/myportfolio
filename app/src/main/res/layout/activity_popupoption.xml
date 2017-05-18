@@ -18,6 +18,16 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         app:rd_enable="true" />
     <com.rey.material.widget.Button
+        android:id="@+id/education"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:layout_marginLeft="16dp" android:layout_marginRight="16dp"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:text="Education"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        app:rd_enable="true" />
+    <com.rey.material.widget.Button
         android:id="@+id/experience"
         android:gravity="left"
         android:layout_width="match_parent"

@@ -1,18 +1,22 @@
 package com.example.user.myapps1st;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,8 +27,17 @@ import android.widget.Toast;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+import com.example.user.myapps1st.GoogleAnalytics.AnalyticsApplication;
 import com.example.user.myapps1st.Portfolio.DialogWorkActivity;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+import com.itextpdf.text.DocumentException;
 import com.squareup.picasso.Picasso;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class MainActivity1 extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -37,6 +50,11 @@ public class MainActivity1 extends AppCompatActivity
     ImageView image;
     TextView name;
     String username, photo;
+    MyHelper myHelper = new MyHelper(this);
+
+    AnalyticsApplication application1;
+
+    private Tracker mTracker;
 
 
     @Override
@@ -48,6 +66,22 @@ public class MainActivity1 extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.frame, new Home_fragment1()).commit();
+
+        application1 = (AnalyticsApplication) getApplication();
+        mTracker = application1.getDefaultTracker();
+
+        Log.e("Mainactivity", "main");
+        Log.e("Mainactivity name", String.valueOf(name));
+        mTracker.setScreenName("Image~" + "Home");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+
+        mTracker.send(new HitBuilders.EventBuilder()
+
+                .setCategory("Home ")
+
+                .setAction("MainActivity")
+
+                .build());
 
         home = (ImageButton) findViewById(R.id.home);
         home.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
@@ -187,10 +221,38 @@ public class MainActivity1 extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            createandDisplayPdf();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void createandDisplayPdf(){
+        SimpleTable pdf = new SimpleTable();
+        String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/MyPortfolio";
+            Log.e("Path", path);
+
+            File dir = new File(path);
+            if (!dir.exists()) {
+                Log.e("abc", "abcHome");
+                dir.mkdirs();
+            }
+
+            File file = new File(dir, "myportfolio.pdf");
+        FileOutputStream fOut = null;
+        try {
+            fOut = new FileOutputStream(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        try {
+            pdf.createPdf();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        }
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -225,6 +287,18 @@ public class MainActivity1 extends AppCompatActivity
     @Override
     protected void onResume() {
         super.onResume();
-
+        if (!myHelper.isNetworkAvailable(this)) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("No internet connection. Please check your internet and try again later.");
+            builder.setCancelable(false);
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                    moveTaskToBack(true);
+                }
+            });
+            builder.show();
+        }
     }
 }

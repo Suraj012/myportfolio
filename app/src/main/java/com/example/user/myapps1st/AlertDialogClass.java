@@ -49,7 +49,7 @@ public class AlertDialogClass {
 
                         public void onClick(DialogInterface dialog, int which) {
                             if (subject != null && subject.equalsIgnoreCase("logout")) {
-                                SharedPreferences sharedPreferences = (context).getSharedPreferences("LoginPreferences", context.MODE_PRIVATE);
+                                SharedPreferences sharedPreferences = (context).getSharedPreferences("Login", context.MODE_PRIVATE);
                                 sharedPreferences.edit().clear().commit();
                                 Intent intent = new Intent(context, LoginActivity1.class);
                                 context.startActivity(intent);

@@ -39,7 +39,7 @@
             android:text="Sorry ! Not Found Any Information"
             android:textSize="18dp"
             android:textColor="@color/materialred"
-            android:visibility="visible" />
+            android:visibility="gone" />
 
         <com.rey.material.widget.Button
             android:id="@+id/add"
@@ -51,7 +51,21 @@
             android:text="Add Information"
             android:textColor="#fff"
             android:textSize="15dp"
-            android:visibility="visible" />
+            android:visibility="gone" />
+
+        <com.rey.material.widget.ProgressView
+            android:id="@+id/progressview"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_marginTop="200dp"
+            android:visibility="gone"
+            app:pv_autostart="true"
+            app:pv_circular="true"
+            app:pv_progressMode="indeterminate"
+            app:pv_progressStyle="@style/Material.Drawable.CircularProgress.Normal" />
+
+
 
 
         <LinearLayout

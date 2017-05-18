@@ -54,6 +54,7 @@
                     android:id="@+id/dateFrom"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="date"
                     android:hint="Enter join date from" />
 
             </android.support.design.widget.TextInputLayout>
@@ -67,6 +68,7 @@
                     android:id="@+id/dateTo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="date"
                     android:hint="Enter join date to" />
 
             </android.support.design.widget.TextInputLayout>

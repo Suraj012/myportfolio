@@ -91,7 +91,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
         if (((!emailId.equalsIgnoreCase("Default")) && (!passwordId.equalsIgnoreCase("Default"))) || ((!fid.equalsIgnoreCase("Default")) && (!ftoken.equalsIgnoreCase("Default")))) {
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            //startActivity(intent);
+            startActivity(intent);
         }
 
         login.setOnClickListener(new View.OnClickListener() {

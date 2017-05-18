@@ -30,6 +30,9 @@ import com.android.volley.toolbox.Volley;
 import com.example.user.myapps1st.Database.DatabaseHelper;
 import com.rey.material.widget.Button;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -100,9 +103,10 @@ public class LoginActivity1 extends AppCompatActivity {
             }
         });
 
-        SharedPreferences sharedPreferences = (LoginActivity1.this).getSharedPreferences("LoginPreferences", MODE_PRIVATE);
+        SharedPreferences sharedPreferences = (LoginActivity1.this).getSharedPreferences("Login", MODE_PRIVATE);
         String username = sharedPreferences.getString("username", "Default").toString();
         String response = sharedPreferences.getString("response", "Default").toString();
+        Log.e("Username", username +"response" +response);
 
         if (((!username.equalsIgnoreCase("Default")) && (!response.equalsIgnoreCase("Default")))) {
             Intent intent = new Intent(LoginActivity1.this, MainActivity1.class);
@@ -120,7 +124,6 @@ public class LoginActivity1 extends AppCompatActivity {
                     login.setClickable(true);
                 } else {
                     loginAuthenticate();
-                    login.setClickable(false);
                 }
 //                if (emailValue.matches("[a-zA-Z0-9._-]+@[a-z]+.[a-z]+")) {
 //                    if (mydb.isValidLoggedIn(emailValue, passwordValue)) {
@@ -186,38 +189,47 @@ public class LoginActivity1 extends AppCompatActivity {
     }
 
     private void loginAuthenticate() {
-        deviceId = myHelper.getImei();
+        login.setClickable(false);
+        deviceId = myHelper.getImei(LoginActivity1.this);
         requestQueue = Volley.newRequestQueue(LoginActivity1.this);
         request = new StringRequest(Request.Method.POST, Constants.loginAuthenticate, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.e("Response", response);
-                Log.e("Response", String.valueOf(response.length()));
-                if (response.equalsIgnoreCase(String.valueOf(0))) {
-                    Toast.makeText(LoginActivity1.this, "Incorrect Username/Password.. !", Toast.LENGTH_SHORT).show();
-                    password.setText(passwordValue);
-                    email.setText(emailValue);
-                    login.setClickable(true);
+                try {
+                    JSONObject object = new JSONObject(response);
+                    String token = object.getString("token");
+                    String uid = object.getString("uid");
+                    Log.e("Response", String.valueOf(token.length()));
+                    if (token.equalsIgnoreCase(String.valueOf(0))) {
+                        Toast.makeText(LoginActivity1.this, "Incorrect Username/Password.. !", Toast.LENGTH_SHORT).show();
+                        password.setText(passwordValue);
+                        email.setText(emailValue);
+                        login.setClickable(true);
 
-                } else if (response.length() == 17) {
-                    SharedPreferences sharedPreferences = (LoginActivity1.this).getSharedPreferences("LoginPreferences", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("username", emailValue);
-                    editor.putString("response", response);
-                    editor.putInt("lastLogin", (int) new Date().getTime());
-                    Log.e("id", response);
-                    editor.commit();
-                    Toast.makeText(LoginActivity1.this, "Success", Toast.LENGTH_SHORT).show();
+                    } else if (token!=null) {
+                        SharedPreferences sharedPreferences = (LoginActivity1.this).getSharedPreferences("Login", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("username", emailValue);
+                        editor.putString("response", token);
+                        editor.putString("uid", uid);
+                        editor.putInt("lastLogin", (int) new Date().getTime());
+                        Log.e("id", uid);
+                        editor.commit();
+                        Toast.makeText(LoginActivity1.this, "Success", Toast.LENGTH_SHORT).show();
 
-                    Intent intent = new Intent(LoginActivity1.this, MainActivity1.class);
-                    startActivity(intent);
-                    // overridePendingTransition(R.anim.abc_slide_out_top, R.anim.abc_slide_in_bottom);
+                        Intent intent = new Intent(LoginActivity1.this, MainActivity1.class);
+                        startActivity(intent);
+                        // overridePendingTransition(R.anim.abc_slide_out_top, R.anim.abc_slide_in_bottom);
 
-                } else {
-                    Toast.makeText(LoginActivity1.this, "Incorrect Password.. !", Toast.LENGTH_SHORT).show();
-                    email.setText(emailValue);
-                    password.setText(passwordValue);
-                    login.setClickable(true);
+                    } else {
+                        Toast.makeText(LoginActivity1.this, "Incorrect Password.. !", Toast.LENGTH_SHORT).show();
+                        email.setText(emailValue);
+                        password.setText(passwordValue);
+                        login.setClickable(true);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
             }
         }, new Response.ErrorListener() {
@@ -258,7 +270,7 @@ public class LoginActivity1 extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == 0) {
-            deviceId = myHelper.getImei();
+            deviceId = myHelper.getImei(LoginActivity1.this);
         }
     }
 }
